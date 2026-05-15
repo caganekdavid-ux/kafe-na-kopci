@@ -191,49 +191,6 @@
             background: linear-gradient(90deg, #6B4423, #D4AF37);
             margin: 1rem auto;
         }
-        /* Mobile Menu Animations */
-        #mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        #mobile-menu.show {
-            max-height: 500px;
-        }
-        
-        .mobile-menu-item {
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: all 0.3s ease;
-        }
-        
-        #mobile-menu.show .mobile-menu-item {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        #mobile-menu.show .mobile-menu-item:nth-child(1) { transition-delay: 0.1s; }
-        #mobile-menu.show .mobile-menu-item:nth-child(2) { transition-delay: 0.15s; }
-        #mobile-menu.show .mobile-menu-item:nth-child(3) { transition-delay: 0.2s; }
-        #mobile-menu.show .mobile-menu-item:nth-child(4) { transition-delay: 0.25s; }
-        
-        .menu-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        
-        #mobile-menu-btn {
-            transition: transform 0.3s ease;
-        }
-        
-        #mobile-menu-btn.active {
-            transform: rotate(90deg);
-        }
-
     </style>
 </head>
 <body class="bg-gray-50">
@@ -256,39 +213,13 @@
                 </button>
             </div>
         </div>
-        <!-- Mobile menu (Enhanced with icons + animations) -->
-        <div id="mobile-menu" class="md:hidden bg-gradient-to-br from-white to-amber-50 border-t border-amber-100 shadow-lg">
-            <div class="px-4 py-6 space-y-2">
-                <a href="#o-nas" class="mobile-menu-item flex items-center text-gray-800 hover:text-amber-700 hover:bg-amber-50 px-4 py-3 rounded-xl transition-all duration-300 group">
-                    <svg class="menu-icon group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 12h18M3 6h18M3 18h18"/>
-                        <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.2"/>
-                    </svg>
-                    <span class="font-medium">O nás</span>
-                </a>
-                <a href="galerie.html" class="mobile-menu-item flex items-center text-gray-800 hover:text-amber-700 hover:bg-amber-50 px-4 py-3 rounded-xl transition-all duration-300 group">
-                    <svg class="menu-icon group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="7" height="7" rx="1"/>
-                        <rect x="14" y="3" width="7" height="7" rx="1"/>
-                        <rect x="3" y="14" width="7" height="7" rx="1"/>
-                        <rect x="14" y="14" width="7" height="7" rx="1"/>
-                    </svg>
-                    <span class="font-medium">Galerie</span>
-                </a>
-                <a href="#produkty" class="mobile-menu-item flex items-center text-gray-800 hover:text-amber-700 hover:bg-amber-50 px-4 py-3 rounded-xl transition-all duration-300 group">
-                    <svg class="menu-icon group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 7h-9a2 2 0 01-2-2V2"/>
-                        <path d="M9 2H5a2 2 0 00-2 2v16a2 2 0 002 2h14a2 2 0 002-2v-9"/>
-                        <circle cx="12" cy="13" r="3" fill="currentColor" opacity="0.2"/>
-                    </svg>
-                    <span class="font-medium">Naše produkty</span>
-                </a>
-                <a href="#kontakt" class="mobile-menu-item flex items-center text-gray-800 hover:text-amber-700 hover:bg-amber-50 px-4 py-3 rounded-xl transition-all duration-300 group">
-                    <svg class="menu-icon group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                    </svg>
-                    <span class="font-medium">Kontakt</span>
-                </a>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#o-nas" class="block text-gray-700 hover:text-amber-700">O nás</a>
+                <a href="galerie.html" class="block text-gray-700 hover:text-amber-700">Galerie</a>
+                <a href="#produkty" class="block text-gray-700 hover:text-amber-700">Naše produkty</a>
+                <a href="#kontakt" class="block text-gray-700 hover:text-amber-700">Kontakt</a>
             </div>
         </div>
     </nav>
@@ -663,21 +594,9 @@
 
     <script src="gallery.js"></script>
     <script>
-        // Mobile menu toggle (enhanced with animations)
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('show');
-            mobileMenuBtn.classList.toggle('active');
-        });
-        
-        // Close menu when clicking a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('show');
-                mobileMenuBtn.classList.remove('active');
-            });
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
         // Smooth scrolling
