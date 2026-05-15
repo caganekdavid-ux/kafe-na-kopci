@@ -204,7 +204,7 @@
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#o-nas" class="text-gray-700 hover:text-amber-700 transition">O nás</a>
-                    <a href="galerie.html" class="text-gray-700 hover:text-amber-700 transition">Galerie</a>
+                    <a href="#galerie" class="text-gray-700 hover:text-amber-700 transition">Galerie</a>
                     <a href="#produkty" class="text-gray-700 hover:text-amber-700 transition">Naše produkty</a>
                     <a href="#kontakt" class="text-gray-700 hover:text-amber-700 transition">Kontakt</a>
                 </div>
@@ -217,7 +217,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <div class="px-4 py-4 space-y-3">
                 <a href="#o-nas" class="block text-gray-700 hover:text-amber-700">O nás</a>
-                <a href="galerie.html" class="block text-gray-700 hover:text-amber-700">Galerie</a>
+                <a href="#galerie" class="block text-gray-700 hover:text-amber-700">Galerie</a>
                 <a href="#produkty" class="block text-gray-700 hover:text-amber-700">Naše produkty</a>
                 <a href="#kontakt" class="block text-gray-700 hover:text-amber-700">Kontakt</a>
             </div>
@@ -238,7 +238,7 @@
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 serif fade-in drop-shadow-2xl">Vítejte v Kafé na Kopci</h1>
                 <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light fade-in drop-shadow-lg">Rodinná kavárna s láskou k domácímu pečení a produktům z vlastního sadu</p>
                 <div class="flex flex-wrap justify-center gap-4 fade-in">
-                    <a href="galerie.html" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-lg hover:shadow-2xl hover:scale-105"><i class="fas fa-images mr-2"></i>Prohlédnout galerii</a>
+                    <a href="#galerie" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-lg hover:shadow-2xl hover:scale-105"><i class="fas fa-images mr-2"></i>Prohlédnout galerii</a>
                     <a href="#kontakt" class="bg-white hover:bg-gray-100 text-gray-800 px-8 py-4 rounded-full font-semibold transition shadow-lg hover:shadow-2xl hover:scale-105"><i class="fas fa-map-marker-alt mr-2"></i>Jak nás najdete</a>
                 </div>
             </div>
@@ -336,75 +336,20 @@
         </div>
     </section>
 
-    <!-- Galerie Preview (Slider) -->
+    <!-- Galerie Section -->
     <section id="galerie" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold serif text-gray-800 mb-4">Galerie</h2>
+                <h2 class="text-4xl md:text-5xl font-bold serif text-gray-800 mb-4">Naše galerie</h2>
                 <div class="section-divider"></div>
                 <p class="text-gray-600 text-lg max-w-3xl mx-auto mt-6">
-                    Nahlédněte do naší kavárny
+                    Podívejte se na atmosféru naší kavárny, domácí produkty a spokojené hosty
                 </p>
             </div>
 
-            <!-- Photo Slider -->
-            <div class="relative overflow-hidden rounded-3xl shadow-2xl mb-8">
-                <div id="slider" class="flex transition-transform duration-500 ease-out">
-                    <div class="min-w-full h-96 md:h-[600px] relative">
-                        <img src="images/Dkava-piti-1.jpg" alt="Káva a pití" class="w-full h-full object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                            <p class="text-white text-2xl font-bold">Káva a pití</p>
-                        </div>
-                    </div>
-                    <div class="min-w-full h-96 md:h-[600px] relative">
-                        <img src="images/Dkava-piti-25.jpg" alt="Domácí zákusky" class="w-full h-full object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                            <p class="text-white text-2xl font-bold">Domácí zákusky</p>
-                        </div>
-                    </div>
-                    <div class="min-w-full h-96 md:h-[600px] relative">
-                        <img src="images/Fslivovice-5.jpg" alt="Slivovice z vlastního sadu" class="w-full h-full object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                            <p class="text-white text-2xl font-bold">Slivovice z vlastního sadu</p>
-                        </div>
-                    </div>
-                    <div class="min-w-full h-96 md:h-[600px] relative">
-                        <img src="images/Dkava-piti-40.jpg" alt="Atmosféra kavárny" class="w-full h-full object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                            <p class="text-white text-2xl font-bold">Atmosféra kavárny</p>
-                        </div>
-                    </div>
-                    <div class="min-w-full h-96 md:h-[600px] relative">
-                        <img src="images/Dkava-piti-50.jpg" alt="Speciální nabídka" class="w-full h-full object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                            <p class="text-white text-2xl font-bold">Speciální nabídka</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slider Controls -->
-                <button id="slider-prev" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-4 rounded-full shadow-lg transition">
-                    <i class="fas fa-chevron-left text-xl"></i>
-                </button>
-                <button id="slider-next" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-4 rounded-full shadow-lg transition">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </button>
-                
-                <!-- Slider Dots -->
-                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-                    <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="0"></button>
-                    <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="1"></button>
-                    <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="2"></button>
-                    <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="3"></button>
-                    <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="4"></button>
-                </div>
-            </div>
-            
-            <!-- CTA to Full Gallery -->
-            <div class="text-center">
-                <a href="galerie.html" class="inline-block bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                    <i class="fas fa-images mr-2"></i>Zobrazit celou galerii (98 fotek)
-                </a>
+            <!-- Gallery Grid -->
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 fade-in">
+                <!-- Gallery items will be loaded here via JavaScript -->
             </div>
         </div>
     </section>
@@ -553,7 +498,7 @@
                     <h4 class="text-xl font-bold serif mb-4">Odkazy</h4>
                     <ul class="space-y-2">
                         <li><a href="https://www.bilokarpatsky-pestitel.cz/" target="_blank" class="text-gray-400 hover:text-amber-500 transition">Bílokarpatský Pěstitel</a></li>
-                        <li><a href="galerie.html" class="text-gray-400 hover:text-amber-500 transition">Galerie</a></li>
+                        <li><a href="#galerie" class="text-gray-400 hover:text-amber-500 transition">Galerie</a></li>
                         <li><a href="#kontakt" class="text-gray-400 hover:text-amber-500 transition">Kontakt</a></li>
                     </ul>
                 </div>
@@ -665,47 +610,6 @@
                 nav.style.background = 'rgb(255, 255, 255)';
             }
         });
-    </script>
-    <script>
-        // Photo Slider
-        let currentSlide = 0;
-        const slider = document.getElementById("slider");
-        const slides = slider ? slider.children.length : 0;
-        const dots = document.querySelectorAll(".slider-dot");
-        
-        function updateSlider() {
-            if (!slider) return;
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((dot, i) => {
-                dot.style.background = i === currentSlide ? "white" : "rgba(255,255,255,0.5)";
-            });
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides;
-            updateSlider();
-        }
-        
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides) % slides;
-            updateSlider();
-        }
-        
-        setInterval(nextSlide, 5000);
-        
-        const prevBtn = document.getElementById("slider-prev");
-        const nextBtn = document.getElementById("slider-next");
-        if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-        if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-        
-        dots.forEach((dot, i) => {
-            dot.addEventListener("click", () => {
-                currentSlide = i;
-                updateSlider();
-            });
-        });
-        
-        updateSlider();
     </script>
 </body>
 </html>

@@ -204,7 +204,7 @@
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#o-nas" class="text-gray-700 hover:text-amber-700 transition">O nás</a>
-                    <a href="galerie.html" class="text-gray-700 hover:text-amber-700 transition">Galerie</a>
+                    <a href="#galerie" class="text-gray-700 hover:text-amber-700 transition">Galerie</a>
                     <a href="#produkty" class="text-gray-700 hover:text-amber-700 transition">Naše produkty</a>
                     <a href="#kontakt" class="text-gray-700 hover:text-amber-700 transition">Kontakt</a>
                 </div>
@@ -217,7 +217,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <div class="px-4 py-4 space-y-3">
                 <a href="#o-nas" class="block text-gray-700 hover:text-amber-700">O nás</a>
-                <a href="galerie.html" class="block text-gray-700 hover:text-amber-700">Galerie</a>
+                <a href="#galerie" class="block text-gray-700 hover:text-amber-700">Galerie</a>
                 <a href="#produkty" class="block text-gray-700 hover:text-amber-700">Naše produkty</a>
                 <a href="#kontakt" class="block text-gray-700 hover:text-amber-700">Kontakt</a>
             </div>
@@ -238,7 +238,7 @@
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 serif fade-in drop-shadow-2xl">Vítejte v Kafé na Kopci</h1>
                 <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light fade-in drop-shadow-lg">Rodinná kavárna s láskou k domácímu pečení a produktům z vlastního sadu</p>
                 <div class="flex flex-wrap justify-center gap-4 fade-in">
-                    <a href="galerie.html" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-lg hover:shadow-2xl hover:scale-105"><i class="fas fa-images mr-2"></i>Prohlédnout galerii</a>
+                    <a href="#galerie" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-lg hover:shadow-2xl hover:scale-105"><i class="fas fa-images mr-2"></i>Prohlédnout galerii</a>
                     <a href="#kontakt" class="bg-white hover:bg-gray-100 text-gray-800 px-8 py-4 rounded-full font-semibold transition shadow-lg hover:shadow-2xl hover:scale-105"><i class="fas fa-map-marker-alt mr-2"></i>Jak nás najdete</a>
                 </div>
             </div>
@@ -553,7 +553,7 @@
                     <h4 class="text-xl font-bold serif mb-4">Odkazy</h4>
                     <ul class="space-y-2">
                         <li><a href="https://www.bilokarpatsky-pestitel.cz/" target="_blank" class="text-gray-400 hover:text-amber-500 transition">Bílokarpatský Pěstitel</a></li>
-                        <li><a href="galerie.html" class="text-gray-400 hover:text-amber-500 transition">Galerie</a></li>
+                        <li><a href="#galerie" class="text-gray-400 hover:text-amber-500 transition">Galerie</a></li>
                         <li><a href="#kontakt" class="text-gray-400 hover:text-amber-500 transition">Kontakt</a></li>
                     </ul>
                 </div>

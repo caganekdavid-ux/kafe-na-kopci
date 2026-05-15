@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - Kafé na Kopci</title>
+    <meta name="description" content="Prohlédněte si fotografie z naší kavárny - domácí zákusky, dorty, káva a produkty z vlastního sadu.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .serif { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Inter', sans-serif; }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #lightbox.active {
+            display: flex;
+        }
+        
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #6B4423 0%, #D4AF37 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-mug-hot text-3xl text-amber-700"></i>
+                    <a href="index.html" class="text-2xl font-bold serif text-gray-800 hover:text-amber-700 transition">Kafé na Kopci</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html#o-nas" class="text-gray-700 hover:text-amber-700 transition">O nás</a>
+                    <a href="galerie.html" class="text-amber-700 font-semibold">Galerie</a>
+                    <a href="index.html#produkty" class="text-gray-700 hover:text-amber-700 transition">Naše produkty</a>
+                    <a href="index.html#kontakt" class="text-gray-700 hover:text-amber-700 transition">Kontakt</a>
+                </div>
+                <a href="index.html" class="md:hidden text-gray-700 hover:text-amber-700">
+                    <i class="fas fa-home text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold serif text-gray-800 mb-4">
+                <i class="fas fa-images text-amber-600 mr-4"></i>Galerie
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Prohlédněte si atmosféru naší kavárny, domácí produkty a spokojené hosty
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="py-8 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="filter-btn active px-6 py-3 rounded-full bg-gray-100 hover:bg-gray-200 font-semibold transition" data-filter="all">
+                    <i class="fas fa-th mr-2"></i>Vše (98)
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-gray-100 hover:bg-gray-200 font-semibold transition" data-filter="coffee">
+                    <i class="fas fa-mug-hot mr-2"></i>Káva & Pití (64)
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-gray-100 hover:bg-gray-200 font-semibold transition" data-filter="spirits">
+                    <i class="fas fa-wine-bottle mr-2"></i>Slivovice (34)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Gallery items loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox">
+        <button id="lightbox-close" class="absolute top-8 right-8 text-white text-4xl hover:text-amber-500 transition z-10">
+            <i class="fas fa-times"></i>
+        </button>
+        <button id="lightbox-prev" class="absolute left-8 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-amber-500 transition">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="lightbox-next" class="absolute right-8 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-amber-500 transition">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="text-center">
+            <img id="lightbox-img" src="" alt="">
+            <p id="lightbox-caption" class="text-white text-xl mt-4"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400 mb-4">
+                <a href="index.html" class="hover:text-amber-500 transition">← Zpět na hlavní stránku</a>
+            </p>
+            <p class="text-gray-400">&copy; 2026 Kafé na Kopci. Všechna práva vyhrazena.</p>
+        </div>
+    </footer>
+
+    <script src="gallery.js"></script>
+    <script>
+        // Gallery filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        let currentFilter = 'all';
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderGallery();
+            });
+        });
+        
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = '';
+            
+            const filtered = currentFilter === 'all' 
+                ? galleryData 
+                : galleryData.filter(item => item.category === currentFilter);
+            
+            filtered.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.innerHTML = `
+                    <img src="${item.src}" alt="${item.alt}" loading="lazy">
+                    <div class="gallery-caption">
+                        <p class="font-semibold">${item.alt}</p>
+                    </div>
+                `;
+                div.addEventListener('click', () => openLightbox(index));
+                grid.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
