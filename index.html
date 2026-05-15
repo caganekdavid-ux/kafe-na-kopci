@@ -233,6 +233,28 @@
         #mobile-menu-btn.active {
             transform: rotate(90deg);
         }
+        /* Logo hover animation */
+        .logo-svg {
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-svg:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes steam {
+            0%, 100% { opacity: 0.7; transform: translateY(0); }
+            50% { opacity: 0.3; transform: translateY(-2px); }
+        }
+        
+        .logo-svg:hover .steam-line {
+            animation: steam 1.5s ease-in-out infinite;
+        }
+        
+        .logo-svg:hover .steam-line:nth-child(1) { animation-delay: 0s; }
+        .logo-svg:hover .steam-line:nth-child(2) { animation-delay: 0.3s; }
+        .logo-svg:hover .steam-line:nth-child(3) { animation-delay: 0.6s; }
+
 
     </style>
 </head>
@@ -242,7 +264,51 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-3">
-                    <i class="fas fa-mug-hot text-3xl text-amber-700"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" class="text-amber-700 logo-svg cursor-pointer w-12 h-8 md:w-14 md:h-9">
+                        <!-- Kopec (hill arc) -->
+                        <path d="M 10 60 Q 35 30, 60 40 Q 85 50, 110 60" 
+                              stroke="currentColor" 
+                              stroke-width="2.5" 
+                              fill="none" 
+                              stroke-linecap="round"/>
+                        
+                        <!-- Šálek kávy (coffee cup) on top of the hill -->
+                        <g transform="translate(60, 30)">
+                          <!-- Cup body -->
+                          <path d="M -8 0 L -6 8 L 6 8 L 8 0 Z" 
+                                stroke="currentColor" 
+                                stroke-width="2" 
+                                fill="none" 
+                                stroke-linejoin="round"/>
+                          
+                          <!-- Cup handle -->
+                          <path d="M 8 2 Q 13 2, 13 5 Q 13 8, 8 8" 
+                                stroke="currentColor" 
+                                stroke-width="2" 
+                                fill="none" 
+                                stroke-linecap="round"/>
+                          
+                          <!-- Steam lines -->
+                          <path d="M -4 -2 Q -4 -6, -3 -8" 
+                                stroke="currentColor" 
+                                stroke-width="1.5" 
+                                fill="none" 
+                                stroke-linecap="round" 
+                                opacity="0.7"/>
+                          <path d="M 0 -2 Q 0 -7, 1 -9" 
+                                stroke="currentColor" 
+                                stroke-width="1.5" 
+                                fill="none" 
+                                stroke-linecap="round" 
+                                opacity="0.7"/>
+                          <path d="M 4 -2 Q 4 -6, 5 -8" 
+                                stroke="currentColor" 
+                                stroke-width="1.5" 
+                                fill="none" 
+                                stroke-linecap="round" 
+                                opacity="0.7"/>
+                        </g>
+                      </svg>
                     <span class="text-2xl font-bold serif text-gray-800">Kafé na Kopci</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
