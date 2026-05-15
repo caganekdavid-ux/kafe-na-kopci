@@ -10,96 +10,139 @@ async function loadGallery() {
         renderGallery();
     } catch (error) {
         console.error('Error loading gallery:', error);
-        // Fallback to demo data if file doesn't exist
-        loadDemoGallery();
     }
 }
 
-// Demo gallery for initial setup
-function loadDemoGallery() {
-    galleryData = [
-        { id: 1, src: 'images/demo1.jpg', caption: 'Naše kavárna', order: 1 },
-        { id: 2, src: 'images/demo2.jpg', caption: 'Čerstvé zákusky', order: 2 },
-        { id: 3, src: 'images/demo3.jpg', caption: 'Domácí dorty', order: 3 },
-        { id: 4, src: 'images/demo4.jpg', caption: 'Výhled z kavárny', order: 4 }
-    ];
-    renderGallery();
-}
-
-// Render gallery grid
+// Render gallery grid with lazy loading for performance
 function renderGallery() {
     const grid = document.getElementById('gallery-grid');
     if (!grid) return;
     
-    grid.innerHTML = '';
-    
-    // Sort by order
-    const sorted = [...galleryData].sort((a, b) => a.order - b.order);
-    
-    sorted.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'gallery-item rounded-lg overflow-hidden shadow-lg';
-        div.innerHTML = `
-            <img src="${item.src}" alt="${item.caption}" loading="lazy">
-            <div class="gallery-caption">
-                <p class="text-sm font-semibold">${item.caption}</p>
+    grid.innerHTML = galleryData.map((item, index) => `
+        <div class="gallery-item fade-in group cursor-pointer" data-index="${index}">
+            <div class="relative overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 bg-gray-100">
+                <img 
+                    data-src="${item.src}" 
+                    alt="${item.alt || 'Kafé na Kopci - ' + item.category}" 
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500 lazy"
+                    loading="lazy"
+                    width="400"
+                    height="256"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <p class="text-white font-semibold">${item.alt || ''}</p>
+                </div>
             </div>
-        `;
-        
-        div.addEventListener('click', () => openLightbox(index));
-        grid.appendChild(div);
+        </div>
+    `).join('');
+    
+    // Lazy load images using Intersection Observer (Core Web Vitals optimization)
+    const lazyImages = document.querySelectorAll('img.lazy');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '50px' // Start loading 50px before image enters viewport
     });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+    
+    // Add click listeners for lightbox
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const index = parseInt(item.dataset.index);
+            openLightbox(index);
+        });
+    });
+    
+    observeElements();
 }
 
 // Lightbox functionality
 function openLightbox(index) {
     currentImageIndex = index;
-    const sorted = [...galleryData].sort((a, b) => a.order - b.order);
-    const item = sorted[index];
+    const item = galleryData[index];
     
-    document.getElementById('lightbox-img').src = item.src;
-    document.getElementById('lightbox-caption').textContent = item.caption;
-    document.getElementById('lightbox').classList.add('active');
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
     
-    document.body.style.overflow = 'hidden';
+    if (lightbox && img) {
+        img.src = item.src;
+        img.alt = item.alt || 'Kafé na Kopci';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = '';
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 }
 
 function nextImage() {
-    const sorted = [...galleryData].sort((a, b) => a.order - b.order);
-    currentImageIndex = (currentImageIndex + 1) % sorted.length;
+    currentImageIndex = (currentImageIndex + 1) % galleryData.length;
     openLightbox(currentImageIndex);
 }
 
 function prevImage() {
-    const sorted = [...galleryData].sort((a, b) => a.order - b.order);
-    currentImageIndex = (currentImageIndex - 1 + sorted.length) % sorted.length;
+    currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length;
     openLightbox(currentImageIndex);
 }
 
-// Event listeners
+// Fade-in on scroll observer
+function observeElements() {
+    const fadeElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right');
+    
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    fadeElements.forEach(el => fadeObserver.observe(el));
+}
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && lightbox.classList.contains('active')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+    }
+});
+
+// Initialize gallery on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadGallery();
+    observeElements();
     
-    document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
-    document.getElementById('lightbox-next')?.addEventListener('click', nextImage);
-    document.getElementById('lightbox-prev')?.addEventListener('click', prevImage);
+    // Lightbox event listeners
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    const lightbox = document.getElementById('lightbox');
     
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (document.getElementById('lightbox').classList.contains('active')) {
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowRight') nextImage();
-            if (e.key === 'ArrowLeft') prevImage();
-        }
-    });
-    
-    // Close on background click
-    document.getElementById('lightbox')?.addEventListener('click', (e) => {
-        if (e.target.id === 'lightbox') closeLightbox();
-    });
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (prevBtn) prevBtn.addEventListener('click', prevImage);
+    if (nextBtn) nextBtn.addEventListener('click', nextImage);
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    }
 });

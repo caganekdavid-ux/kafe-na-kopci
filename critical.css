@@ -1,0 +1,27 @@
+/* Critical CSS - Above the fold */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    background: #FDFBF7;
+}
+
+h1, h2, h3, .serif {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.02em;
+}
+
+.hero-bg {
+    background: linear-gradient(135deg, #6B4423 0%, #3E2723 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
