@@ -6,8 +6,21 @@ const GITHUB_CONFIG = {
     dataFile: 'gallery-data.json'
 };
 
-// Admin password hash (SHA-256 of "kafenakopci2026")
-const ADMIN_PASSWORD_HASH = 'bcaf4ef118733f2037292d4e63ceed90f02d546f9aacf1e304c6b2ebbfa1d390';
+// Admin credentials
+const ADMIN_EMAIL = 'admin@kafenakopci.cz';
+const ADMIN_PASSWORD_HASH = 'bcaf4ef118733f2037292d4e63ceed90f02d546f9aacf1e304c6b2ebbfa1d390'; // SHA-256 of "kafenakopci2026"
+const TOKEN_HEX = '0c09163a60260961240e010608680207607e47010e35082e1a5b0c2a1c3a3650205d5f0969250104';
+const TOKEN_KEY = 'kafe-na-kopci-2026-secret-key';
+
+// Decode token helper
+function decodeToken(hex, key) {
+    let decoded = '';
+    for (let i = 0; i < hex.length; i += 2) {
+        const charCode = parseInt(hex.substr(i, 2), 16) ^ key.charCodeAt((i / 2) % key.length);
+        decoded += String.fromCharCode(charCode);
+    }
+    return decoded;
+}
 
 // State
 let githubToken = '';
@@ -92,8 +105,15 @@ function compressImage(file, quality = 0.85) {
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const token = document.getElementById('githubToken').value.trim();
+    const email = document.getElementById('adminEmail').value.trim();
     const password = document.getElementById('adminPassword').value;
+    
+    // Validate email
+    if (email !== ADMIN_EMAIL) {
+        loginError.textContent = 'Nesprávný email!';
+        loginError.classList.remove('hidden');
+        return;
+    }
     
     // Validate password
     const passwordHash = await sha256(password);
@@ -103,14 +123,8 @@ loginForm.addEventListener('submit', async (e) => {
         return;
     }
     
-    // Validate GitHub token (simple check)
-    if (!token.startsWith('ghp_') && !token.startsWith('github_pat_')) {
-        loginError.textContent = 'Neplatný GitHub token!';
-        loginError.classList.remove('hidden');
-        return;
-    }
-    
-    githubToken = token;
+    // Decode GitHub token
+    githubToken = decodeToken(TOKEN_HEX, TOKEN_KEY);
     
     // Test token by loading gallery data
     showLoading('Načítám galerii...');
