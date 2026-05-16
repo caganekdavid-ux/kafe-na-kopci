@@ -10,6 +10,11 @@
     "category": "coffee"
   },
   {
+    "src": "images/optimized/Dkava-piti-17.jpg",
+    "alt": "KafÃ© na Kopci",
+    "category": "coffee"
+  },
+  {
     "src": "images/optimized/Dkava-piti-10.jpg",
     "alt": "KafÃ© na Kopci",
     "category": "coffee"
@@ -26,11 +31,6 @@
   },
   {
     "src": "images/optimized/Dkava-piti-16.jpg",
-    "alt": "KafÃ© na Kopci",
-    "category": "coffee"
-  },
-  {
-    "src": "images/optimized/Dkava-piti-17.jpg",
     "alt": "KafÃ© na Kopci",
     "category": "coffee"
   },
