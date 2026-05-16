@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Kafé na Kopci - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .photo-item {
+            transition: all 0.3s ease;
+        }
+        .photo-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        .dragging {
+            opacity: 0.5;
+        }
+        #loading {
+            display: none;
+        }
+        #loading.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    
+    <!-- Login Screen -->
+    <div id="loginScreen" class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Kafé na Kopci</h1>
+            <h2 class="text-xl text-gray-600 mb-8 text-center">Administrace galerie</h2>
+            
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">GitHub Token</label>
+                    <input 
+                        type="password" 
+                        id="githubToken" 
+                        placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                        required
+                    />
+                    <p class="text-xs text-gray-500 mt-2">Personal Access Token s oprávněním 'repo'</p>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Admin heslo</label>
+                    <input 
+                        type="password" 
+                        id="adminPassword" 
+                        placeholder="••••••••"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                        required
+                    />
+                </div>
+                
+                <button 
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold py-3 rounded-lg hover:from-amber-700 hover:to-orange-700 transition-all shadow-lg"
+                >
+                    Přihlásit se
+                </button>
+                
+                <p id="loginError" class="text-red-600 text-sm text-center hidden"></p>
+            </form>
+            
+            <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                <p class="text-sm text-gray-700"><strong>Jak získat GitHub token:</strong></p>
+                <ol class="text-xs text-gray-600 mt-2 space-y-1 list-decimal list-inside">
+                    <li>GitHub.com → Settings → Developer settings → Personal access tokens</li>
+                    <li>Generate new token (classic)</li>
+                    <li>Zaškrtni: <code class="bg-gray-200 px-1 rounded">repo</code></li>
+                    <li>Zkopíruj token (ukáže se jen jednou!)</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="hidden">
+        <!-- Header -->
+        <div class="bg-white shadow-md">
+            <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Správa galerie</h1>
+                    <p class="text-sm text-gray-600">Kafé na Kopci</p>
+                </div>
+                <button 
+                    id="logoutBtn"
+                    class="px-4 py-2 text-gray-600 hover:text-gray-800 font-semibold"
+                >
+                    Odhlásit se
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            
+            <!-- Upload Section -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Přidat novou fotografii</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Vybrat fotku</label>
+                        <input 
+                            type="file" 
+                            id="photoUpload" 
+                            accept="image/*"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                        />
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Popisek (alt text)</label>
+                        <input 
+                            type="text" 
+                            id="photoAlt" 
+                            value="Kafé na Kopci"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                        />
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Kategorie</label>
+                        <select 
+                            id="photoCategory"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                        >
+                            <option value="coffee">Káva (coffee)</option>
+                            <option value="spirits">Slivovice (spirits)</option>
+                        </select>
+                    </div>
+                    
+                    <div id="uploadPreview" class="hidden">
+                        <p class="text-sm font-semibold text-gray-700 mb-2">Náhled:</p>
+                        <img id="previewImg" class="max-h-64 rounded-lg shadow-md" />
+                        <p id="previewSize" class="text-xs text-gray-500 mt-2"></p>
+                    </div>
+                    
+                    <button 
+                        id="uploadBtn"
+                        class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white font-bold py-3 rounded-lg hover:from-green-700 hover:to-green-800 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled
+                    >
+                        Nahrát a publikovat
+                    </button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-800">Aktuální fotografie (<span id="photoCount">0</span>)</h2>
+                    <button 
+                        id="refreshBtn"
+                        class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold text-gray-700 transition"
+                    >
+                        Obnovit
+                    </button>
+                </div>
+                
+                <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Photos will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading" class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 text-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-amber-600 mx-auto mb-4"></div>
+            <p id="loadingText" class="text-gray-700 font-semibold">Nahrávám...</p>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
