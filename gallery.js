@@ -29,19 +29,22 @@ function loadDemoGallery() {
 function openLightbox(index) {
     currentImageIndex = index;
     const lightbox = document.getElementById('lightbox');
-    const img = lightbox.querySelector('img');
+    const img = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
     const item = galleryData[currentImageIndex];
     
-    // Use WebP if supported, otherwise JPEG
-    const supportsWebP = document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0;
-    img.src = supportsWebP ? item.webp : item.src;
-    
-    lightbox.classList.add('active');
+    if (item) {
+        img.src = item.src;
+        caption.textContent = item.alt || 'Kafé na Kopci';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scroll
+    }
 }
 
 // Close lightbox
 function closeLightbox() {
     document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = ''; // Restore scroll
 }
 
 // Navigate lightbox
