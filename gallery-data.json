@@ -190,6 +190,11 @@
     "category": "grower"
   },
   {
+    "src": "images/optimized/Dkava-piti-7.jpg",
+    "alt": "Kafé na kopci",
+    "category": "cafe"
+  },
+  {
     "src": "images/optimized/Dkava-piti-46.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
@@ -226,11 +231,6 @@
   },
   {
     "src": "images/optimized/Dkava-piti-65.jpg",
-    "alt": "Kafé na kopci",
-    "category": "cafe"
-  },
-  {
-    "src": "images/optimized/Dkava-piti-7.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
   },
