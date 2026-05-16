@@ -653,7 +653,7 @@
         <div class="absolute inset-0 z-0">
             <picture>
                 <source srcset="images/optimized/Dkava-piti-29.webp" type="image/webp">
-                <img src="images/optimized/Dkava-piti-29.jpg" alt="Kafé na Kopci" class="w-full h-full object-cover" loading="lazy" />
+                <img src="images/optimized/Dkava-piti-29.jpg" alt="Kafé na Kopci" class="w-full h-full object-cover" footer-parallax-img loading="lazy" />
             </picture>
             <!-- Solid Dark Overlay (no gradient) -->
             <div class="absolute inset-0 bg-gray-900/90"></div>
@@ -842,5 +842,25 @@
     <!-- Footer with Logo -->
     
 
+
+    // Footer parallax effect
+    window.addEventListener('scroll', function() {
+        const footerImg = document.querySelector('.footer-parallax-img');
+        if (footerImg) {
+            const footer = footerImg.closest('footer');
+            const footerRect = footer.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Only apply parallax when footer is visible
+            if (footerRect.top < windowHeight && footerRect.bottom > 0) {
+                // Calculate parallax offset
+                const scrollProgress = (windowHeight - footerRect.top) / (windowHeight + footerRect.height);
+                const parallaxOffset = scrollProgress * 100; // 100px max movement
+                
+                footerImg.style.transform = `translateY(${parallaxOffset}px)`;
+            }
+        }
+    });
+    
 </body>
 </html>
