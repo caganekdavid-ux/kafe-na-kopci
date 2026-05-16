@@ -865,7 +865,7 @@
             if (footerRect.top < windowHeight && footerRect.bottom > 0) {
                 // Calculate parallax offset
                 const scrollProgress = (windowHeight - footerRect.top) / (windowHeight + footerRect.height);
-                const parallaxOffset = scrollProgress * 300; // 300px max movement (more visible)
+                const parallaxOffset = scrollProgress * -150; // -150px upward movement (standard parallax)
                 
                 footerImg.style.transform = `translateY(${parallaxOffset}px)`;
             }
