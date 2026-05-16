@@ -387,6 +387,13 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 serif fade-in drop-shadow-2xl">Vítejte v Kafé na Kopci</h1>
                 <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light fade-in drop-shadow-lg">Rodinná kavárna s láskou k domácímu pečení a produktům z vlastního sadu</p>
+                <!-- Logo watermark in hero -->
+                <div class="absolute bottom-8 right-8 opacity-20 hover:opacity-40 transition-opacity">
+                    <picture>
+                        <source srcset="images/optimized/logo-200.webp" type="image/webp">
+                        <img src="images/optimized/logo-200.jpg" alt="Kafé na Kopci Logo" class="w-24 h-24 md:w-32 md:h-32 object-contain" />
+                    </picture>
+                </div>
                 <div class="flex flex-wrap justify-center gap-4 fade-in">
                     <a href="galerie.html" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-lg hover:shadow-2xl hover:scale-105"><i class="fas fa-images mr-2"></i>Prohlédnout galerii</a>
                     <a href="#kontakt" class="bg-white hover:bg-gray-100 text-gray-800 px-8 py-4 rounded-full font-semibold transition shadow-lg hover:shadow-2xl hover:scale-105"><i class="fas fa-map-marker-alt mr-2"></i>Jak nás najdete</a>
@@ -869,5 +876,43 @@
         
         updateSlider();
     </script>
+
+    <!-- Footer with Logo -->
+    <footer class="bg-gradient-to-br from-amber-900 to-orange-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <!-- Logo -->
+                <div class="flex justify-center md:justify-start">
+                    <picture>
+                        <source srcset="images/optimized/logo-200.webp" type="image/webp">
+                        <img src="images/optimized/logo-200.jpg" alt="Kafé na Kopci" class="w-32 h-32 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                    </picture>
+                </div>
+                
+                <!-- Info -->
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold serif mb-2">Kafé na Kopci</h3>
+                    <p class="text-amber-100 mb-4">Rodinná kavárna s láskou k tradici</p>
+                    <div class="space-y-1 text-sm text-amber-200">
+                        <p>Adriana Štosová</p>
+                        <p><a href="tel:+420774729688" class="hover:text-white transition">+420 774 729 688</a></p>
+                        <p><a href="mailto:adstosova@gmail.com" class="hover:text-white transition">adstosova@gmail.com</a></p>
+                    </div>
+                </div>
+                
+                <!-- Social / Links -->
+                <div class="flex justify-center md:justify-end space-x-4">
+                    <a href="#o-nas" class="text-amber-200 hover:text-white transition">O nás</a>
+                    <a href="galerie.html" class="text-amber-200 hover:text-white transition">Galerie</a>
+                    <a href="#kontakt" class="text-amber-200 hover:text-white transition">Kontakt</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-amber-700 text-center text-sm text-amber-200">
+                <p>&copy; 2026 Kafé na Kopci. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
