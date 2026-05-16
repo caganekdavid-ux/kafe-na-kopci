@@ -205,6 +205,11 @@
     "category": "cafe"
   },
   {
+    "src": "images/optimized/photo-1778970018679.jpg",
+    "alt": "Kafé na Kopci",
+    "category": "desserts"
+  },
+  {
     "src": "images/optimized/Fslivovice-5.jpg",
     "alt": "Kafé na kopci",
     "category": "grower"
@@ -243,11 +248,6 @@
     "src": "images/optimized/Dkava-piti-31.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
-  },
-  {
-    "src": "images/optimized/photo-1778970018679.jpg",
-    "alt": "Kafé na Kopci",
-    "category": "desserts"
   },
   {
     "src": "images/optimized/Dkava-piti-5.jpg",
