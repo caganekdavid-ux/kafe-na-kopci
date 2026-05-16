@@ -304,6 +304,9 @@
         
         // Display gallery with pagination
         function renderGallery() {
+            console.log('renderGallery called, galleryData:', galleryData);
+            console.log('galleryData length:', galleryData ? galleryData.length : 'undefined');
+            
             if (!galleryData || galleryData.length === 0) {
                 console.log('Waiting for gallery data...');
                 return;
@@ -321,6 +324,7 @@
             // Show only current page items
             for (let i = startIndex; i < endIndex; i++) {
                 const item = galleryData[i];
+                console.log(`Item ${i}:`, item);
                 const div = document.createElement('div');
                 div.className = 'gallery-item';
                 div.innerHTML = `
