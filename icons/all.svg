@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Grid/Gallery icon representing "All" - brown tones -->
+  <!-- Top left square -->
+  <rect x="8" y="8" width="20" height="20" rx="3" fill="#8B4513" stroke="#654321" stroke-width="1.5"/>
+  <!-- Top right square -->
+  <rect x="36" y="8" width="20" height="20" rx="3" fill="#8B4513" stroke="#654321" stroke-width="1.5"/>
+  <!-- Bottom left square -->
+  <rect x="8" y="36" width="20" height="20" rx="3" fill="#8B4513" stroke="#654321" stroke-width="1.5"/>
+  <!-- Bottom right square -->
+  <rect x="36" y="36" width="20" height="20" rx="3" fill="#8B4513" stroke="#654321" stroke-width="1.5"/>
+  
+  <!-- Mini icons in each square -->
+  <!-- Coffee cup (top left) -->
+  <circle cx="18" cy="15" r="3" fill="#CD853F"/>
+  <path d="M15 18h6v4c0 1.1-0.9 2-2 2h-2c-1.1 0-2-0.9-2-2v-4z" fill="#CD853F"/>
+  
+  <!-- Cake slice (top right) -->
+  <path d="M43 18l3-4 3 4h-6z" fill="#CD853F"/>
+  <circle cx="46" cy="15" r="1" fill="#DC143C"/>
+  
+  <!-- Tree (bottom left) -->
+  <circle cx="18" cy="43" r="4" fill="#6B8E23"/>
+  <rect x="17" y="47" width="2" height="6" fill="#654321"/>
+  
+  <!-- Photo frame (bottom right) -->
+  <rect x="42" y="42" width="8" height="8" rx="1" fill="none" stroke="#CD853F" stroke-width="1.5"/>
+  <circle cx="46" cy="46" r="2" fill="#F4A460"/>
+</svg>
