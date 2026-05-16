@@ -8,12 +8,7 @@ async function loadGallery() {
         const response = await fetch('gallery-data.json');
         galleryData = await response.json();
         
-        // Update paths to use optimized folder
-        galleryData = galleryData.map(item => ({
-            ...item,
-            src: item.src.replace('images/', 'images/optimized/'),
-            webp: item.src.replace('images/', 'images/optimized/').replace(/\.(jpg|jpeg)/i, '.webp')
-        }));
+        // Paths already include optimized/ in gallery-data.json
         
         renderGallery();
     } catch (error) {
