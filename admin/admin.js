@@ -168,7 +168,9 @@ async function loadGalleryData() {
     });
     
     if (!response.ok) {
-        throw new Error('Failed to load gallery data');
+        const errorText = await response.text();
+        console.error('GitHub API error:', response.status, errorText);
+        throw new Error(`Failed to load gallery data: ${response.status} ${errorText}`);
     }
     
     const data = await response.json();
@@ -176,6 +178,7 @@ async function loadGalleryData() {
     const content = decodeURIComponent(escape(atob(data.content)));
     galleryData = JSON.parse(content);
     
+    console.log(`✅ Gallery loaded: ${galleryData.length} photos`);
     return data.sha; // Return SHA for updates
 }
 
