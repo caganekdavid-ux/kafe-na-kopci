@@ -867,6 +867,37 @@
         const nextBtn = document.getElementById("slider-next");
         if (prevBtn) prevBtn.addEventListener("click", prevSlide);
         if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+        
+        // Touch swipe support for mobile slider
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const mobileSlider = document.getElementById("mobile-slider");
+        
+        if (mobileSlider) {
+            mobileSlider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            mobileSlider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+        
+        function handleSwipe() {
+            const swipeThreshold = 50; // Minimum distance for swipe
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swiped left -> next slide
+                    nextSlide();
+                } else {
+                    // Swiped right -> previous slide
+                    prevSlide();
+                }
+            }
+        }
     </script>
 
     <!-- Footer with Logo -->
