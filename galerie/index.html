@@ -363,8 +363,24 @@
             });
             pagination.appendChild(prevBtn);
             
-            // Page numbers
-            for (let i = 1; i <= totalPages; i++) {
+            // Page numbers - sliding window (max 4 visible)
+            const MAX_VISIBLE_PAGES = 4;
+            let startPage = 1;
+            let endPage = totalPages;
+            
+            if (totalPages > MAX_VISIBLE_PAGES) {
+                // Calculate sliding window
+                const halfWindow = Math.floor(MAX_VISIBLE_PAGES / 2);
+                startPage = Math.max(1, currentPage - halfWindow);
+                endPage = Math.min(totalPages, startPage + MAX_VISIBLE_PAGES - 1);
+                
+                // Adjust if we're near the end
+                if (endPage === totalPages) {
+                    startPage = Math.max(1, endPage - MAX_VISIBLE_PAGES + 1);
+                }
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
                 const pageBtn = document.createElement('button');
                 pageBtn.textContent = i;
                 pageBtn.className = `px-4 py-2 rounded-lg font-semibold transition ${i === currentPage ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-amber-100 shadow'}`;
