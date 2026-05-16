@@ -7,7 +7,7 @@ const GITHUB_CONFIG = {
 };
 
 // Admin credentials
-const ADMIN_EMAIL = 'admin@kafenakopci.cz';
+const ADMIN_EMAIL = 'adstosova@gmail.com';
 const ADMIN_PASSWORD_HASH = 'bcaf4ef118733f2037292d4e63ceed90f02d546f9aacf1e304c6b2ebbfa1d390'; // SHA-256 of "kafenakopci2026"
 const TOKEN_HEX = '0c09163a60260961240e010608680207607e47010e35082e1a5b0c2a1c3a3650205d5f0969250104';
 const TOKEN_KEY = 'kafe-na-kopci-2026-secret-key';
