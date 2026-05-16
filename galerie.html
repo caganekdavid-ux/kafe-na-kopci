@@ -301,10 +301,17 @@
         // Pagination variables
         const ITEMS_PER_PAGE = 12;
         let currentPage = 1;
-        const totalPages = Math.ceil(galleryData.length / ITEMS_PER_PAGE);
+        let totalPages = 0;
         
         // Display gallery with pagination
         function renderGallery() {
+            if (!galleryData || galleryData.length === 0) {
+                console.log('Waiting for gallery data...');
+                return;
+            }
+            
+            totalPages = Math.ceil(galleryData.length / ITEMS_PER_PAGE);
+            
             const grid = document.getElementById('gallery-grid');
             grid.innerHTML = '';
             
@@ -331,12 +338,17 @@
             renderPagination();
             
             // Scroll to top of gallery
-            document.getElementById('gallery-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const gallerySection = document.getElementById('gallery-grid');
+            if (gallerySection) {
+                gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
         
         // Render pagination buttons
         function renderPagination() {
             const pagination = document.getElementById('pagination');
+            if (!pagination) return;
+            
             pagination.innerHTML = '';
             
             // Previous button
@@ -356,7 +368,7 @@
             for (let i = 1; i <= totalPages; i++) {
                 const pageBtn = document.createElement('button');
                 pageBtn.textContent = i;
-                pageBtn.className = `px-4 py-2 rounded-lg transition ${i === currentPage ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-amber-100 shadow'}`;
+                pageBtn.className = `px-4 py-2 rounded-lg font-semibold transition ${i === currentPage ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-amber-100 shadow'}`;
                 pageBtn.addEventListener('click', () => {
                     currentPage = i;
                     renderGallery();
@@ -378,8 +390,7 @@
             pagination.appendChild(nextBtn);
         }
         
-        // Render on page load
-        renderGallery();
+        // Don't call renderGallery() here - it's called from gallery.js after data loads
     </script>
     <script>
         // Mobile menu toggle
