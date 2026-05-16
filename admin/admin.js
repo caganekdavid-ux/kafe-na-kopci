@@ -1,3 +1,6 @@
+// Admin.js loaded - check console
+console.log('🔒 Admin panel security active - login required');
+
 // GitHub Configuration
 const GITHUB_CONFIG = {
     owner: 'caganekdavid-ux',
