@@ -1,6 +1,3 @@
-// Admin.js loaded - check console
-console.log('🔒 Admin panel security active - login required');
-
 // GitHub Configuration
 const GITHUB_CONFIG = {
     owner: 'caganekdavid-ux',
@@ -168,9 +165,7 @@ async function loadGalleryData() {
     });
     
     if (!response.ok) {
-        const errorText = await response.text();
-        console.error('GitHub API error:', response.status, errorText);
-        throw new Error(`Failed to load gallery data: ${response.status} ${errorText}`);
+        throw new Error('Failed to load gallery data');
     }
     
     const data = await response.json();
@@ -178,7 +173,6 @@ async function loadGalleryData() {
     const content = decodeURIComponent(escape(atob(data.content)));
     galleryData = JSON.parse(content);
     
-    console.log(`✅ Gallery loaded: ${galleryData.length} photos`);
     return data.sha; // Return SHA for updates
 }
 
