@@ -251,24 +251,7 @@
         </div>
     </section>
 
-    <!-- Filter Buttons -->
-    <section class="py-8 bg-white border-b">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-wrap justify-center gap-4">
-                <button class="filter-btn active px-6 py-3 rounded-full bg-gray-100 hover:bg-gray-200 font-semibold transition" data-filter="all">
-                    <i class="fas fa-th mr-2"></i>Vše (98)
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full bg-gray-100 hover:bg-gray-200 font-semibold transition" data-filter="coffee">
-                    <i class="fas fa-mug-hot mr-2"></i>Káva & Pití (64)
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full bg-gray-100 hover:bg-gray-200 font-semibold transition" data-filter="spirits">
-                    <i class="fas fa-wine-bottle mr-2"></i>Slivovice (34)
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Grid -->
+<!-- Gallery Grid -->
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -306,28 +289,13 @@
 
     <script src="gallery.js"></script>
     <script>
-        // Gallery filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        let currentFilter = 'all';
-        
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.dataset.filter;
-                renderGallery();
-            });
-        });
-        
+        // Display all gallery images (no filtering)
         function renderGallery() {
             const grid = document.getElementById('gallery-grid');
             grid.innerHTML = '';
             
-            const filtered = currentFilter === 'all' 
-                ? galleryData 
-                : galleryData.filter(item => item.category === currentFilter);
-            
-            filtered.forEach((item, index) => {
+            // Show all images
+            galleryData.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className = 'gallery-item';
                 div.innerHTML = `
@@ -340,6 +308,9 @@
                 grid.appendChild(div);
             });
         }
+        
+        // Render on page load
+        renderGallery();
     </script>
     <script>
         // Mobile menu toggle
