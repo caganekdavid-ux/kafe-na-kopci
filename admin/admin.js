@@ -169,7 +169,8 @@ async function loadGalleryData() {
     }
     
     const data = await response.json();
-    const content = atob(data.content);
+    // Proper UTF-8 decoding from base64
+    const content = decodeURIComponent(escape(atob(data.content)));
     galleryData = JSON.parse(content);
     
     return data.sha; // Return SHA for updates
