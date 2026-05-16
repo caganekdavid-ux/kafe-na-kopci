@@ -285,6 +285,11 @@
     "category": "cafe"
   },
   {
+    "src": "images/optimized/photo-1778970009903.jpg",
+    "alt": "Kafé na Kopci",
+    "category": "desserts"
+  },
+  {
     "src": "images/optimized/Dkava-piti-6.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
@@ -323,11 +328,6 @@
     "src": "images/optimized/Dkava-piti-57.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
-  },
-  {
-    "src": "images/optimized/photo-1778970009903.jpg",
-    "alt": "Kafé na Kopci",
-    "category": "desserts"
   },
   {
     "src": "images/optimized/Dkava-piti-9.jpg",
