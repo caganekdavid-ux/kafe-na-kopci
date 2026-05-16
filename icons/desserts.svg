@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Cake slice icon - golden brown -->
+  <path d="M10 50h44v6H10v-6z" fill="#D2691E" stroke="#8B4513" stroke-width="2"/>
+  <!-- Cake layers -->
+  <path d="M14 34l18-20 18 20H14z" fill="#CD853F"/>
+  <path d="M14 34l18-20 18 20" fill="none" stroke="#8B4513" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M16 42l16-8 16 8H16z" fill="#D2691E"/>
+  <path d="M16 42l16-8 16 8v8H16v-8z" fill="none" stroke="#8B4513" stroke-width="2"/>
+  <!-- Frosting detail -->
+  <circle cx="32" cy="26" r="2" fill="#F4A460"/>
+  <circle cx="26" cy="32" r="1.5" fill="#F4A460"/>
+  <circle cx="38" cy="32" r="1.5" fill="#F4A460"/>
+  <!-- Cherry on top -->
+  <circle cx="32" cy="10" r="3" fill="#DC143C"/>
+  <path d="M32 13v5" stroke="#8B4513" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Tree/orchard icon - brown/green tones -->
+  <!-- Trunk -->
+  <rect x="28" y="32" width="8" height="24" fill="#8B4513" stroke="#654321" stroke-width="1.5"/>
+  <!-- Foliage/Crown -->
+  <circle cx="32" cy="24" r="12" fill="#6B8E23"/>
+  <circle cx="24" cy="28" r="10" fill="#6B8E23"/>
+  <circle cx="40" cy="28" r="10" fill="#6B8E23"/>
+  <!-- Fruits/Apples -->
+  <circle cx="28" cy="20" r="2.5" fill="#CD5C5C"/>
+  <circle cx="36" cy="22" r="2.5" fill="#CD5C5C"/>
+  <circle cx="32" cy="28" r="2.5" fill="#CD5C5C"/>
+  <!-- Ground -->
+  <ellipse cx="32" cy="56" rx="16" ry="2" fill="#8B7355"/>
+</svg>

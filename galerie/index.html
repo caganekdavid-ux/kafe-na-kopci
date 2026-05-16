@@ -30,6 +30,24 @@
         .serif { font-family: 'Playfair Display', serif; }
         body { font-family: 'Inter', sans-serif; }
         
+        /* Category Filter Buttons */
+        .category-filter {
+            background: white;
+            color: #6B4423;
+            border: 2px solid #E5E7EB;
+        }
+        
+        .category-filter:hover {
+            background: #FEF3C7;
+            border-color: #F59E0B;
+        }
+        
+        .category-filter.active {
+            background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
+            color: white;
+            border-color: #D97706;
+        }
+        
         .gallery-item {
             position: relative;
             overflow: hidden;
@@ -249,6 +267,39 @@
 <!-- Gallery Grid -->
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button 
+                    class="category-filter active flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg"
+                    data-category="all"
+                >
+                    <span class="text-2xl">🏠</span>
+                    <span>Vše</span>
+                </button>
+                <button 
+                    class="category-filter flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg"
+                    data-category="cafe"
+                >
+                    <img src="../icons/cafe.svg" alt="Kavárna" class="w-6 h-6">
+                    <span>Kavárna</span>
+                </button>
+                <button 
+                    class="category-filter flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg"
+                    data-category="desserts"
+                >
+                    <img src="../icons/desserts.svg" alt="Zákusky" class="w-6 h-6">
+                    <span>Zákusky</span>
+                </button>
+                <button 
+                    class="category-filter flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg"
+                    data-category="grower"
+                >
+                    <img src="../icons/grower.svg" alt="Pěstitel" class="w-6 h-6">
+                    <span>Pěstitel</span>
+                </button>
+            </div>
+            
             <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Gallery items loaded via JavaScript -->
             </div>
@@ -300,26 +351,28 @@
         
         // Display gallery with pagination
         function renderGallery() {
-            console.log('renderGallery called, galleryData:', galleryData);
-            console.log('galleryData length:', galleryData ? galleryData.length : 'undefined');
+            console.log('renderGallery called, filteredGalleryData:', filteredGalleryData);
+            console.log('filteredGalleryData length:', filteredGalleryData ? filteredGalleryData.length : 'undefined');
             
-            if (!galleryData || galleryData.length === 0) {
+            if (!filteredGalleryData || filteredGalleryData.length === 0) {
                 console.log('Waiting for gallery data...');
+                const grid = document.getElementById('gallery-grid');
+                grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500"><p class="text-xl">Žádné fotky v této kategorii</p></div>';
                 return;
             }
             
-            totalPages = Math.ceil(galleryData.length / ITEMS_PER_PAGE);
+            totalPages = Math.ceil(filteredGalleryData.length / ITEMS_PER_PAGE);
             
             const grid = document.getElementById('gallery-grid');
             grid.innerHTML = '';
             
             // Calculate start and end indices for current page
             const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-            const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, galleryData.length);
+            const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, filteredGalleryData.length);
             
             // Show only current page items
             for (let i = startIndex; i < endIndex; i++) {
-                const item = galleryData[i];
+                const item = filteredGalleryData[i];
                 console.log(`Item ${i}:`, item);
                 const div = document.createElement('div');
                 div.className = 'gallery-item';
@@ -329,7 +382,9 @@
                         <p class="font-semibold">${item.alt}</p>
                     </div>
                 `;
-                div.addEventListener('click', () => openLightbox(i));
+                // Find original index in full galleryData for lightbox
+                const originalIndex = galleryData.findIndex(photo => photo.src === item.src);
+                div.addEventListener('click', () => openLightbox(originalIndex));
                 grid.appendChild(div);
             }
             

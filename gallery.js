@@ -1,6 +1,8 @@
 // Gallery data - will be loaded from JSON file
 let galleryData = [];
+let filteredGalleryData = [];
 let currentImageIndex = 0;
+let currentCategory = 'all';
 
 // Load gallery data
 async function loadGallery() {
@@ -20,11 +22,42 @@ async function loadGallery() {
             }));
         }
         
+        filteredGalleryData = galleryData;
         renderGallery();
+        setupFilters();
     } catch (error) {
         console.error('Error loading gallery:', error);
         loadDemoGallery();
     }
+}
+
+// Setup category filters
+function setupFilters() {
+    const filterButtons = document.querySelectorAll('.category-filter');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Get selected category
+            const category = button.dataset.category;
+            currentCategory = category;
+            
+            // Filter gallery data
+            if (category === 'all') {
+                filteredGalleryData = galleryData;
+            } else {
+                filteredGalleryData = galleryData.filter(item => item.category === category);
+            }
+            
+            // Re-render gallery
+            renderGallery();
+        });
+    });
 }
 
 // Demo gallery for initial setup
