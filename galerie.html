@@ -86,17 +86,23 @@
             display: flex;
         }
         
-        #lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
+        #lightbox > div {
             position: relative;
             z-index: 1;
         }
         
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        
         #lightbox-caption {
-            position: relative;
-            z-index: 1;
+            margin-top: 1rem;
+        }
+        
+        #lightbox button {
+            z-index: 10;
         }
         
         .filter-btn {
