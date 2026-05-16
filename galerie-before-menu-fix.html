@@ -93,42 +93,32 @@
         }
         /* Mobile Menu Animations */
         #mobile-menu {
-            display: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
         }
         
         #mobile-menu.show {
-            display: block;
-            animation: slideDown 0.3s ease-out;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            max-height: 500px;
+            opacity: 1;
         }
         
         .mobile-menu-item {
             opacity: 0;
             transform: translateX(-20px);
-            animation: slideIn 0.3s ease-out forwards;
+            transition: all 0.3s ease;
         }
         
-        #mobile-menu.show .mobile-menu-item:nth-child(1) { animation-delay: 0.05s; }
-        #mobile-menu.show .mobile-menu-item:nth-child(2) { animation-delay: 0.1s; }
-        #mobile-menu.show .mobile-menu-item:nth-child(3) { animation-delay: 0.15s; }
-        #mobile-menu.show .mobile-menu-item:nth-child(4) { animation-delay: 0.2s; }
-        
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        #mobile-menu.show .mobile-menu-item {
+            opacity: 1;
+            transform: translateX(0);
         }
+        
+        #mobile-menu.show .mobile-menu-item:nth-child(1) { transition-delay: 0.1s; }
+        #mobile-menu.show .mobile-menu-item:nth-child(2) { transition-delay: 0.15s; }
+        #mobile-menu.show .mobile-menu-item:nth-child(3) { transition-delay: 0.2s; }
+        #mobile-menu.show .mobile-menu-item:nth-child(4) { transition-delay: 0.25s; }
         
         .menu-icon {
             width: 24px;
