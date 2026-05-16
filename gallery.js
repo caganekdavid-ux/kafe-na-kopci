@@ -5,10 +5,20 @@ let currentImageIndex = 0;
 // Load gallery data
 async function loadGallery() {
     try {
-        const response = await fetch('gallery-data.json');
+        // Detect if we're in a subdirectory (galerie/)
+        const isSubdirectory = window.location.pathname.includes('/galerie');
+        const jsonPath = isSubdirectory ? '../gallery-data.json' : 'gallery-data.json';
+        
+        const response = await fetch(jsonPath);
         galleryData = await response.json();
         
-        // Paths already include optimized/ in gallery-data.json
+        // If in subdirectory, prepend ../ to all image paths
+        if (isSubdirectory) {
+            galleryData = galleryData.map(item => ({
+                ...item,
+                src: '../' + item.src
+            }));
+        }
         
         renderGallery();
     } catch (error) {
