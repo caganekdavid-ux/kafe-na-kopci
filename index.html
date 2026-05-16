@@ -811,9 +811,6 @@
                 slider.innerHTML = selected.map((photo, index) => `
                     <div class="min-w-full h-96 relative">
                         <img src="${photo.src}" alt="Kafé na Kopci" class="w-full h-full object-cover" loading="${index === 0 ? 'eager' : 'lazy'}">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                            <p class="text-white text-2xl font-bold">Kafé na Kopci</p>
-                        </div>
                     </div>
                 `).join('');
                 
