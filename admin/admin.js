@@ -6,8 +6,8 @@ const GITHUB_CONFIG = {
     dataFile: 'gallery-data.json'
 };
 
-// Admin password hash (SHA-256 of "kafenadedka2025")
-const ADMIN_PASSWORD_HASH = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918';
+// Admin password hash (SHA-256 of "kafenakopci2026")
+const ADMIN_PASSWORD_HASH = 'bcaf4ef118733f2037292d4e63ceed90f02d546f9aacf1e304c6b2ebbfa1d390';
 
 // State
 let githubToken = '';
