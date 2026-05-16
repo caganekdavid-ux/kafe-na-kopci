@@ -310,11 +310,6 @@
     "category": "cafe"
   },
   {
-    "src": "images/optimized/Dkava-piti-69.jpg",
-    "alt": "Kafé na kopci",
-    "category": "cafe"
-  },
-  {
     "src": "images/optimized/Dkava-piti-8.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
@@ -333,6 +328,11 @@
     "src": "images/optimized/Fslivovice-7.jpg",
     "alt": "Naše Třešňovica",
     "category": "grower"
+  },
+  {
+    "src": "images/optimized/Dkava-piti-69.jpg",
+    "alt": "Kafé na kopci",
+    "category": "cafe"
   },
   {
     "src": "images/optimized/Fslivovice-9.jpg",
