@@ -648,7 +648,19 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="relative overflow-hidden py-16 md:py-20">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <picture>
+                <source srcset="images/optimized/Dkava-piti-29.webp" type="image/webp">
+                <img src="images/optimized/Dkava-piti-29.jpg" alt="Kafé na Kopci" class="w-full h-full object-cover" loading="lazy" />
+            </picture>
+            <!-- Dark Blue Overlay (semi-transparent) -->
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-900/85 via-blue-900/80 to-gray-900/90"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
@@ -679,6 +691,7 @@
                 <p>&copy; 2026 Kafé na Kopci. Všechna práva vyhrazena.</p>
             </div>
         </div>
+    </div>
     </footer>
 
     <!-- Lightbox -->
