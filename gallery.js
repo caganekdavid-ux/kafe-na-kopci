@@ -30,31 +30,6 @@ function loadDemoGallery() {
     renderGallery();
 }
 
-// Render gallery grid
-function renderGallery() {
-    const grid = document.getElementById('gallery-grid');
-    if (!grid) return;
-    
-    grid.innerHTML = '';
-    
-    galleryData.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'gallery-item group';
-        div.innerHTML = `
-            <picture>
-                <source srcset="${item.webp}" type="image/webp">
-                <img src="${item.src}" alt="${item.caption}" loading="lazy" 
-                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-            </picture>
-            <div class="gallery-caption">
-                <p class="text-sm">${item.caption}</p>
-            </div>
-        `;
-        div.addEventListener('click', () => openLightbox(index));
-        grid.appendChild(div);
-    });
-}
-
 // Open lightbox
 function openLightbox(index) {
     currentImageIndex = index;
