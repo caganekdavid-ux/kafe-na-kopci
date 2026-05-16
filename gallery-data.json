@@ -325,6 +325,11 @@
     "category": "cafe"
   },
   {
+    "src": "images/optimized/photo-1778970002798.jpg",
+    "alt": "Kafé na Kopci",
+    "category": "desserts"
+  },
+  {
     "src": "images/optimized/Fslivovice-12.jpg",
     "alt": "Náš kávový likér",
     "category": "grower"
@@ -353,11 +358,6 @@
     "src": "images/optimized/Dkava-piti-68.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
-  },
-  {
-    "src": "images/optimized/photo-1778970002798.jpg",
-    "alt": "Kafé na Kopci",
-    "category": "desserts"
   },
   {
     "src": "images/optimized/photo-1778970009903.jpg",
