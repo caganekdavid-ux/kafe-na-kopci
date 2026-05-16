@@ -15,6 +15,11 @@
     "category": "cafe"
   },
   {
+    "src": "images/optimized/Fslivovice-16.jpg",
+    "alt": "Naše marmelády",
+    "category": "grower"
+  },
+  {
     "src": "images/optimized/Dkava-piti-1.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
@@ -23,11 +28,6 @@
     "src": "images/optimized/Dkava-piti-22.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
-  },
-  {
-    "src": "images/optimized/Fslivovice-16.jpg",
-    "alt": "Naše marmelády",
-    "category": "grower"
   },
   {
     "src": "images/optimized/Dkava-piti-13.jpg",
