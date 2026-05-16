@@ -50,11 +50,6 @@
     "category": "cafe"
   },
   {
-    "src": "images/optimized/Dkava-piti-11.jpg",
-    "alt": "Kafé na kopci",
-    "category": "cafe"
-  },
-  {
     "src": "images/optimized/Dkava-piti-22.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
@@ -71,6 +66,11 @@
   },
   {
     "src": "images/optimized/Dkava-piti-24.jpg",
+    "alt": "Kafé na kopci",
+    "category": "cafe"
+  },
+  {
+    "src": "images/optimized/Dkava-piti-11.jpg",
     "alt": "Kafé na kopci",
     "category": "cafe"
   },
