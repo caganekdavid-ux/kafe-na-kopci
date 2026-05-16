@@ -90,6 +90,13 @@
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
+            position: relative;
+            z-index: 1;
+        }
+        
+        #lightbox-caption {
+            position: relative;
+            z-index: 1;
         }
         
         .filter-btn {
@@ -393,56 +400,19 @@
             pagination.appendChild(nextBtn);
         }
         
-        // Lightbox functions
-        let currentLightboxIndex = 0;
-        
-        function openLightbox(index) {
-            currentLightboxIndex = index;
-            const lightbox = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            const caption = document.getElementById('lightbox-caption');
+        // Lightbox functions are in gallery.js
+        // Event listeners for close/nav buttons (gallery.js handles keyboard)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+            document.getElementById('lightbox-next').addEventListener('click', () => navigateLightbox(1));
+            document.getElementById('lightbox-prev').addEventListener('click', () => navigateLightbox(-1));
             
-            if (galleryData[index]) {
-                img.src = galleryData[index].src;
-                caption.textContent = galleryData[index].alt;
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scroll
-            }
-        }
-        
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scroll
-        }
-        
-        function nextLightbox() {
-            currentLightboxIndex = (currentLightboxIndex + 1) % galleryData.length;
-            openLightbox(currentLightboxIndex);
-        }
-        
-        function prevLightbox() {
-            currentLightboxIndex = (currentLightboxIndex - 1 + galleryData.length) % galleryData.length;
-            openLightbox(currentLightboxIndex);
-        }
-        
-        // Lightbox event listeners
-        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-        document.getElementById('lightbox-next').addEventListener('click', nextLightbox);
-        document.getElementById('lightbox-prev').addEventListener('click', prevLightbox);
-        
-        // Close on background click
-        document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target.id === 'lightbox') {
-                closeLightbox();
-            }
-        });
-        
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
+            // Close on background click
+            document.getElementById('lightbox').addEventListener('click', (e) => {
+                if (e.target.id === 'lightbox') {
+                    closeLightbox();
+                }
+            });
         });
         
         // Don't call renderGallery() here - it's called from gallery.js after data loads
