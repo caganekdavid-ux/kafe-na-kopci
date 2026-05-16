@@ -189,8 +189,17 @@ function renderGallery() {
                     class="w-full text-sm border border-gray-300 rounded px-2 py-1 mb-2 alt-input"
                     data-index="${index}"
                 />
-                <div class="flex items-center justify-between">
-                    <span class="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">${photo.category}</span>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                    <select 
+                        class="text-xs border border-gray-300 rounded px-2 py-1 category-select flex-1"
+                        data-index="${index}"
+                    >
+                        <option value="cafe" ${photo.category === 'cafe' ? 'selected' : ''}>Kavárna</option>
+                        <option value="desserts" ${photo.category === 'desserts' ? 'selected' : ''}>Zákusky</option>
+                        <option value="grower" ${photo.category === 'grower' ? 'selected' : ''}>Pěstitel</option>
+                    </select>
+                </div>
+                <div class="flex justify-end">
                     <button class="text-red-600 hover:text-red-800 text-sm font-semibold delete-btn" data-index="${index}">
                         Smazat
                     </button>
@@ -206,6 +215,10 @@ function renderGallery() {
     
     document.querySelectorAll('.alt-input').forEach(input => {
         input.addEventListener('change', handleAltChange);
+    });
+    
+    document.querySelectorAll('.category-select').forEach(select => {
+        select.addEventListener('change', handleCategoryChange);
     });
     
     // Drag and drop
@@ -227,6 +240,23 @@ async function handleAltChange(e) {
     showLoading('Ukládám změny...');
     try {
         await saveGalleryData('Update photo alt text');
+        hideLoading();
+    } catch (error) {
+        hideLoading();
+        alert('Chyba při ukládání: ' + error.message);
+    }
+}
+
+// Handle category change
+async function handleCategoryChange(e) {
+    const index = parseInt(e.target.dataset.index);
+    const newCategory = e.target.value;
+    
+    galleryData[index].category = newCategory;
+    
+    showLoading('Ukládám kategorii...');
+    try {
+        await saveGalleryData(`Update photo category to ${newCategory}`);
         hideLoading();
     } catch (error) {
         hideLoading();
