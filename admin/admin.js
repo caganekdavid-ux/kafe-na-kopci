@@ -181,7 +181,18 @@ function renderGallery() {
     photoCount.textContent = galleryData.length;
     
     galleryGrid.innerHTML = galleryData.map((photo, index) => `
-        <div class="photo-item bg-white rounded-lg shadow-md overflow-hidden" data-index="${index}" draggable="true">
+        <div class="photo-item bg-white rounded-lg shadow-md overflow-hidden relative" data-index="${index}" draggable="true" style="cursor: grab;">
+            <!-- Drag handle -->
+            <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded p-1.5 shadow-md drag-handle" style="cursor: grab;">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="6" cy="5" r="1.5" fill="#666"/>
+                    <circle cx="14" cy="5" r="1.5" fill="#666"/>
+                    <circle cx="6" cy="10" r="1.5" fill="#666"/>
+                    <circle cx="14" cy="10" r="1.5" fill="#666"/>
+                    <circle cx="6" cy="15" r="1.5" fill="#666"/>
+                    <circle cx="14" cy="15" r="1.5" fill="#666"/>
+                </svg>
+            </div>
             <img src="../${photo.src}" alt="${photo.alt}" class="w-full h-48 object-cover">
             <div class="p-3">
                 <input 
@@ -297,6 +308,7 @@ async function handleDelete(e) {
 function handleDragStart(e) {
     draggedElement = this;
     this.classList.add('dragging');
+    this.style.cursor = 'grabbing';
     e.dataTransfer.effectAllowed = 'move';
 }
 
@@ -332,6 +344,7 @@ function handleDrop(e) {
 
 function handleDragEnd(e) {
     this.classList.remove('dragging');
+    this.style.cursor = 'grab';
 }
 
 // Refresh button

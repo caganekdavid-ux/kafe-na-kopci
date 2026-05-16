@@ -14,8 +14,19 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
+        .photo-item:active {
+            cursor: grabbing !important;
+        }
         .dragging {
             opacity: 0.5;
+            transform: rotate(2deg) scale(0.95);
+        }
+        .drag-handle {
+            transition: all 0.2s ease;
+        }
+        .drag-handle:hover {
+            background-color: rgba(251, 191, 36, 0.95) !important;
+            transform: scale(1.1);
         }
         #loading {
             display: none;
