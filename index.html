@@ -345,9 +345,15 @@
 
     <!-- Pohádka Section -->
     <section class="py-12 md:py-20 bg-white relative overflow-hidden">
-        <!-- Pás pozadí - desktop: větší levý margin, až na pravý okraj | mobile: celá šířka -->
-        <div class="absolute top-12 md:top-20 bottom-12 md:bottom-20 overflow-hidden rounded-l-3xl slide-right ml-4 sm:ml-6" style="z-index: 0; left: 0; right: 0;">
+        <!-- Pás pozadí - responsive -->
+        <div class="absolute top-12 md:top-20 bottom-12 md:bottom-20 overflow-hidden rounded-l-3xl slide-right" style="z-index: 0;">
             <style>
+                /* Mobile: margin from container edges */
+                .slide-right[style*="z-index: 0"] {
+                    left: 1rem;
+                    right: 1rem;
+                }
+                /* Desktop: larger left margin, full right */
                 @media (min-width: 768px) {
                     .slide-right[style*="z-index: 0"] {
                         left: 10% !important;
