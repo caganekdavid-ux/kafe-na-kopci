@@ -393,5 +393,10 @@
     "src": "images/optimized/photo-1778973788506.jpg",
     "alt": "Kafé na Kopci",
     "category": "cafe"
+  },
+  {
+    "src": "images/optimized/photo-1779017132421.jpg",
+    "alt": "Na pohádku v Kafé na Kopci",
+    "category": "desserts"
   }
 ]
