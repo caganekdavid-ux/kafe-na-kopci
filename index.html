@@ -345,19 +345,19 @@
 
     <!-- Pohádka Section -->
     <section class="py-12 md:py-20 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-7xl mx-auto relative z-10">
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 
                 <!-- Levá strana - Text s odrážkami a pozadím -->
-                <div class="relative fade-in mx-2 sm:mx-0">
-                    <!-- Pás pozadí (pouze levá část, mobile-safe) -->
-                    <div class="absolute inset-0 sm:-mx-6 md:-mx-12 overflow-hidden rounded-2xl">
-                        <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka pozadí" class="w-full h-full object-cover rounded-2xl" style="filter: blur(20px);">
-                        <div class="absolute inset-0 bg-gradient-to-r from-amber-50/90 via-white/75 to-amber-50/90 rounded-2xl"></div>
+                <div class="relative slide-right ml-4 sm:ml-6 md:ml-8 mr-0">
+                    <!-- Pás pozadí - asymetrický (zleva zaoblený, zprava ostrý) -->
+                    <div class="absolute inset-0 -ml-4 sm:-ml-6 md:-ml-8 -mr-4 sm:-mr-6 md:-mr-8 overflow-hidden rounded-l-2xl">
+                        <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka pozadí" class="w-full h-full object-cover rounded-l-2xl" style="filter: blur(20px);">
+                        <div class="absolute inset-0 bg-gradient-to-r from-amber-50/90 via-white/75 to-amber-50/90 rounded-l-2xl"></div>
                     </div>
                     
                     <!-- Obsah uvnitř pásu -->
-                    <div class="relative z-10 py-8 md:py-12 px-6 md:px-0">
+                    <div class="relative z-10 py-8 md:py-12 px-6 md:px-8 pr-4 sm:pr-6">
                         <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold serif text-gray-800 mb-3 md:mb-4">
                             Přijďte na <span class="text-amber-700">Pohádku</span>
                         </h2>
