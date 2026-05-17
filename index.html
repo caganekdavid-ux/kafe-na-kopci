@@ -344,75 +344,74 @@
     </section>
 
     <!-- Pohádka Section -->
-    <section class="py-20 bg-white relative overflow-hidden">
-        <!-- Pozadí - horizontální pás s fotkou Pohádky -->
-        <div class="absolute inset-0 z-0">
-            <div class="absolute top-1/4 left-0 right-0 h-96">
-                <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka pozadí" class="w-full h-full object-cover" style="filter: blur(20px);">
-                <div class="absolute inset-0 bg-gradient-to-r from-amber-50/95 via-white/85 to-amber-50/95"></div>
-            </div>
-        </div>
-        
+    <section class="py-12 md:py-20 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 
-                <!-- Levá strana - Text s odrážkami -->
-                <div class="fade-in">
-                    <h2 class="text-5xl md:text-6xl font-bold serif text-gray-800 mb-4">
-                        Přijďte na <span class="text-amber-700">Pohádku</span>
-                    </h2>
-                    <div class="section-divider mb-6"></div>
+                <!-- Levá strana - Text s odrážkami a pozadím -->
+                <div class="relative fade-in">
+                    <!-- Pás pozadí (pouze levá část, mobile-safe) -->
+                    <div class="absolute inset-0 -mx-4 sm:-mx-6 md:-mx-12 overflow-hidden rounded-2xl">
+                        <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka pozadí" class="w-full h-full object-cover" style="filter: blur(20px);">
+                        <div class="absolute inset-0 bg-gradient-to-r from-amber-50/90 via-white/75 to-amber-50/90"></div>
+                    </div>
                     
-                    <p class="text-xl text-gray-600 mb-6 font-semibold">
-                        Autorský zákusek Adriany Štosové
-                    </p>
-                    
-                    <!-- Odrážky jako u Pěstitele -->
-                    <ul class="space-y-4 text-lg text-gray-600">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-award text-amber-600 text-xl mt-1"></i>
-                            <span><strong class="text-amber-800">Regionální potravina</strong> - prestižní ocenění Ministerstva zemědělství ČR</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-heart text-amber-600 text-xl mt-1"></i>
-                            <span>Ruční výroba s&nbsp;láskou k&nbsp;detailu</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-leaf text-amber-600 text-xl mt-1"></i>
-                            <span>Kvalitní suroviny z&nbsp;regionu</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fab fa-instagram text-amber-600 text-xl mt-1"></i>
-                            <span>Sledujte <a href="https://www.instagram.com/dorty_od_adriany" target="_blank" class="text-amber-700 hover:text-amber-800 font-semibold underline">@dorty_od_adriany</a></span>
-                        </li>
-                    </ul>
-                    
-                    <!-- CTA tlačítko -->
-                    <div class="mt-8">
-                        <a href="#kontakt" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-8 py-4 rounded-full font-bold shadow-lg transition">
-                            <i class="fas fa-phone"></i>
-                            <span>Objednat Pohádku</span>
-                        </a>
+                    <!-- Obsah uvnitř pásu -->
+                    <div class="relative z-10 py-8 md:py-12 px-4 md:px-0">
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold serif text-gray-800 mb-3 md:mb-4">
+                            Přijďte na <span class="text-amber-700">Pohádku</span>
+                        </h2>
+                        <div class="section-divider mb-4 md:mb-6"></div>
+                        
+                        <p class="text-base md:text-xl text-gray-700 mb-4 md:mb-6 font-semibold">
+                            Autorský zákusek Adriany Štosové
+                        </p>
+                        
+                        <!-- Odrážky -->
+                        <ul class="space-y-3 md:space-y-4 text-sm md:text-lg text-gray-700">
+                            <li class="flex items-start gap-2 md:gap-3">
+                                <i class="fas fa-award text-amber-600 text-base md:text-xl mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-amber-800">Regionální potravina</strong> - prestižní ocenění Ministerstva zemědělství ČR</span>
+                            </li>
+                            <li class="flex items-start gap-2 md:gap-3">
+                                <i class="fas fa-heart text-amber-600 text-base md:text-xl mt-1 flex-shrink-0"></i>
+                                <span>Ruční výroba s&nbsp;láskou k&nbsp;detailu</span>
+                            </li>
+                            <li class="flex items-start gap-2 md:gap-3">
+                                <i class="fas fa-leaf text-amber-600 text-base md:text-xl mt-1 flex-shrink-0"></i>
+                                <span>Kvalitní suroviny z&nbsp;regionu</span>
+                            </li>
+                            <li class="flex items-start gap-2 md:gap-3">
+                                <i class="fab fa-instagram text-amber-600 text-base md:text-xl mt-1 flex-shrink-0"></i>
+                                <span>Sledujte <a href="https://www.instagram.com/dorty_od_adriany" target="_blank" class="text-amber-700 hover:text-amber-800 font-semibold underline">@dorty_od_adriany</a></span>
+                            </li>
+                        </ul>
+                        
+                        <!-- CTA tlačítko -->
+                        <div class="mt-6 md:mt-8">
+                            <a href="#kontakt" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold shadow-lg transition text-sm md:text-base w-full sm:w-auto">
+                                <i class="fas fa-phone"></i>
+                                <span>Objednat Pohádku</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Pravá strana - Polaroid posunutý doprava -->
-                <div class="relative fade-in" style="animation-delay: 0.2s;">
-                    <div class="md:ml-12">
-                        <!-- Polaroid fotka (mírně otočený) -->
-                        <div class="bg-white p-4 shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-300 max-w-md ml-auto card-hover rounded-2xl">
-                            <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka" class="w-full aspect-square object-cover rounded-xl">
-                            <div class="p-4 text-center">
-                                <p class="text-3xl text-gray-800 serif font-bold">Pohádka</p>
-                                <p class="text-sm text-gray-500 mt-2">Zákusek s oceněním</p>
-                            </div>
+                <!-- Pravá strana - Polaroid -->
+                <div class="relative fade-in mt-8 md:mt-0" style="animation-delay: 0.2s;">
+                    <!-- Polaroid fotka -->
+                    <div class="bg-white p-3 md:p-4 shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-300 max-w-sm mx-auto md:max-w-md md:ml-auto card-hover rounded-2xl">
+                        <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka" class="w-full aspect-square object-cover rounded-xl">
+                        <div class="p-3 md:p-4 text-center">
+                            <p class="text-2xl md:text-3xl text-gray-800 serif font-bold">Pohádka</p>
+                            <p class="text-xs md:text-sm text-gray-500 mt-1 md:mt-2">Zákusek s oceněním</p>
                         </div>
-                        
-                        <!-- Badge "přilepený" v rohu -->
-                        <div class="absolute -top-8 -right-8 bg-white rounded-full p-6 shadow-2xl border-4 border-amber-100 transform -rotate-12 hover:rotate-0 hover:scale-110 transition-all duration-300 group">
-                            <img src="images/awards/regionalni-potravina-200.png" alt="Regionální potravina" class="w-24 h-24 group-hover:scale-110 transition-transform">
-                            <div class="absolute inset-0 rounded-full bg-amber-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity"></div>
-                        </div>
+                    </div>
+                    
+                    <!-- Badge -->
+                    <div class="absolute -top-6 -right-6 md:-top-8 md:-right-8 bg-white rounded-full p-4 md:p-6 shadow-2xl border-4 border-amber-100 transform -rotate-12 hover:rotate-0 hover:scale-110 transition-all duration-300 group">
+                        <img src="images/awards/regionalni-potravina-200.png" alt="Regionální potravina" class="w-16 h-16 md:w-24 md:h-24 group-hover:scale-110 transition-transform">
+                        <div class="absolute inset-0 rounded-full bg-amber-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity"></div>
                     </div>
                 </div>
                 
