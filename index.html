@@ -343,25 +343,79 @@
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10"><i class="fas fa-chevron-down text-white text-2xl opacity-50"></i></div>
     </section>
 
-    <!-- Award Badge Section -->
-    <section class="py-16 bg-gradient-to-r from-green-50 via-amber-50 to-green-50 relative overflow-hidden">
-        <!-- Animated background pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, #22c55e 0px, #22c55e 2px, transparent 2px, transparent 10px);"></div>
+    <!-- Pohádka Section -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <!-- Pozadí - horizontální pás s fotkou Pohádky -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-0 right-0 h-96">
+                <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka pozadí" class="w-full h-full object-cover" style="filter: blur(20px);">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-50/95 via-white/85 to-amber-50/95"></div>
+            </div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-8 slide-left">
-                <div class="award-badge bg-white rounded-full p-8 shadow-2xl relative group">
-                    <img src="images/awards/regionalni-potravina-200.png" alt="Regionální potravina" class="w-32 h-32 group-hover:scale-110 transition-transform duration-300">
-                    <!-- Glow effect -->
-                    <div class="absolute inset-0 rounded-full bg-green-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Levá strana - Text s odrážkami -->
+                <div class="fade-in">
+                    <h2 class="text-5xl md:text-6xl font-bold serif text-gray-800 mb-4">
+                        Přijďte na <span class="text-amber-700">Pohádku</span>
+                    </h2>
+                    <div class="section-divider mb-6"></div>
+                    
+                    <p class="text-xl text-gray-600 mb-6 font-semibold">
+                        Autorský zákusek Adriany Štosové
+                    </p>
+                    
+                    <!-- Odrážky jako u Pěstitele -->
+                    <ul class="space-y-4 text-lg text-gray-600">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-award text-amber-600 text-xl mt-1"></i>
+                            <span><strong class="text-amber-800">Regionální potravina</strong> — prestižní ocenění Ministerstva zemědělství ČR</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-heart text-amber-600 text-xl mt-1"></i>
+                            <span>Ruční výroba s&nbsp;láskou k&nbsp;detailu</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-leaf text-amber-600 text-xl mt-1"></i>
+                            <span>Kvalitní suroviny z&nbsp;regionu</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fab fa-instagram text-amber-600 text-xl mt-1"></i>
+                            <span>Sledujte <a href="https://www.instagram.com/dorty_od_adriany" target="_blank" class="text-amber-700 hover:text-amber-800 font-semibold underline">@dorty_od_adriany</a></span>
+                        </li>
+                    </ul>
+                    
+                    <!-- CTA tlačítko -->
+                    <div class="mt-8">
+                        <a href="#kontakt" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-8 py-4 rounded-full font-bold shadow-lg transition">
+                            <i class="fas fa-phone"></i>
+                            <span>Objednat Pohádku</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="text-center md:text-left">
-                    <h3 class="text-4xl font-bold serif text-gray-800 mb-3">Regionální potravina</h3>
-                    <p class="text-gray-600 text-xl font-semibold">Bílokarpatský Pěstitel</p>
-                    <p class="text-gray-500 mt-2 text-lg">Ocenění Ministerstva zemědělství ČR za&nbsp;výjimečnou kvalitu</p>
+                
+                <!-- Pravá strana - Polaroid posunutý doprava -->
+                <div class="relative fade-in" style="animation-delay: 0.2s;">
+                    <div class="md:ml-12">
+                        <!-- Polaroid fotka (mírně otočený) -->
+                        <div class="bg-white p-4 shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-300 max-w-md ml-auto card-hover rounded-2xl">
+                            <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka" class="w-full aspect-square object-cover rounded-xl">
+                            <div class="p-4 text-center">
+                                <p class="text-3xl text-gray-800 serif font-bold">Pohádka</p>
+                                <p class="text-sm text-gray-500 mt-2">Zákusek s oceněním</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Badge "přilepený" v rohu -->
+                        <div class="absolute -top-8 -right-8 bg-white rounded-full p-6 shadow-2xl border-4 border-amber-100 transform -rotate-12 hover:rotate-0 hover:scale-110 transition-all duration-300 group">
+                            <img src="images/awards/regionalni-potravina-200.png" alt="Regionální potravina" class="w-24 h-24 group-hover:scale-110 transition-transform">
+                            <div class="absolute inset-0 rounded-full bg-amber-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity"></div>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </section>
