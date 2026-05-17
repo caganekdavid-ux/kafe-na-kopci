@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pohádka - Varianty designu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .serif { font-family: 'Georgia', serif; }
+        .section-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #92400e, #d97706);
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigace mezi variantami -->
+    <div class="fixed top-0 left-0 right-0 bg-gray-900 text-white p-4 z-50 flex justify-center gap-4">
+        <a href="#variant-1" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded">Varianta 1</a>
+        <a href="#variant-2" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded">Varianta 2</a>
+        <a href="#variant-3" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded">Varianta 3</a>
+        <a href="#variant-4" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded">Varianta 4</a>
+    </div>
+
+    <div class="pt-20"></div>
+
+    <!-- ============================================ -->
+    <!-- VARIANTA 1: Překrývající se kruhy (kreativní) -->
+    <!-- ============================================ -->
+    <section id="variant-1" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-white to-green-50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-5xl font-bold serif text-gray-800 mb-4">VARIANTA 1: Překrývající se kruhy</h2>
+            <p class="text-center text-gray-500 mb-12">Kreativní layout - fotka + badge se překrývají</p>
+            
+            <div class="relative flex items-center justify-center min-h-[500px]">
+                <!-- Fotka Pohádky (levý kruh) -->
+                <div class="absolute left-0 md:left-20 w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white z-10">
+                    <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Badge Regionální potravina (pravý kruh, překrývá se) -->
+                <div class="absolute right-0 md:right-20 w-64 h-64 md:w-80 md:h-80 bg-white rounded-full shadow-2xl flex items-center justify-center z-20 border-4 border-green-100">
+                    <div class="text-center p-8">
+                        <img src="images/awards/regionalni-potravina-200.png" alt="Regionální potravina" class="w-24 h-24 mx-auto mb-4">
+                        <h3 class="text-xl font-bold serif text-gray-800 mb-2">Oceněná</h3>
+                        <p class="text-3xl font-bold text-green-700 mb-2">Pohádka</p>
+                        <p class="text-sm text-gray-600">Regionální potravina</p>
+                    </div>
+                </div>
+                
+                <!-- Text dole (centrovaný) -->
+                <div class="absolute bottom-0 left-0 right-0 text-center bg-white/90 backdrop-blur-sm py-6 px-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
+                    <h2 class="text-4xl font-bold serif text-amber-800 mb-3">Přijďte si vychutnat Pohádku!</h2>
+                    <p class="text-gray-600 text-lg mb-4">Náš zákusek <strong>Pohádka</strong> od Bílokarpatského pěstitele získal prestižní ocenění <strong>Regionální potravina</strong> Ministerstva zemědělství ČR za výjimečnou kvalitu a autentickou chuť.</p>
+                    <a href="#kontakt" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-full font-semibold transition">
+                        Objednat Pohádku <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- VARIANTA 2: Hero s pozadím (dramatický) -->
+    <!-- ============================================ -->
+    <section id="variant-2" class="min-h-screen flex items-center justify-center bg-gray-900 py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-5xl font-bold text-white mb-4">VARIANTA 2: Hero s pozadím</h2>
+            <p class="text-center text-gray-400 mb-12">Dramatický - fotka jako pozadí s tmavým overlayem</p>
+        </div>
+        
+        <!-- Pozadí s fotkou -->
+        <div class="absolute inset-0 z-0">
+            <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80"></div>
+        </div>
+        
+        <!-- Obsah -->
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+            <!-- Badge -->
+            <div class="inline-block bg-white rounded-full p-6 shadow-2xl mb-8 animate-bounce">
+                <img src="images/awards/regionalni-potravina-200.png" alt="Regionální potravina" class="w-32 h-32">
+            </div>
+            
+            <h2 class="text-6xl md:text-7xl font-bold serif text-white mb-6">
+                Ochutnejte oceněnou<br><span class="text-amber-400">Pohádku</span>
+            </h2>
+            
+            <p class="text-xl text-gray-200 mb-4 leading-relaxed">
+                Jedinečný zákusek od <strong class="text-white">Bílokarpatského pěstitele</strong>
+            </p>
+            
+            <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Získal prestižní ocenění <strong class="text-green-400">Regionální potravina</strong> Ministerstva zemědělství ČR za výjimečnou kvalitu, autentickou chuť a použití regionálních surovin.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#kontakt" class="bg-amber-600 hover:bg-amber-700 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-lg">
+                    <i class="fas fa-cake-candles mr-2"></i> Objednat teď
+                </a>
+                <a href="#o-nas" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-10 py-4 rounded-full font-semibold text-lg transition border-2 border-white/30">
+                    Zjistit více <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- VARIANTA 3: Split screen (moderní) -->
+    <!-- ============================================ -->
+    <section id="variant-3" class="min-h-screen flex items-center bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-5xl font-bold serif text-gray-800 mb-4">VARIANTA 3: Split screen</h2>
+            <p class="text-center text-gray-500 mb-12">Moderní - 50/50 split fotka vs. obsah</p>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-0 md:px-8">
+            <div class="grid md:grid-cols-2 gap-0 items-center bg-gradient-to-br from-amber-50 to-green-50 rounded-3xl overflow-hidden shadow-2xl">
+                
+                <!-- Levá strana - Fotka -->
+                <div class="relative h-[400px] md:h-[600px]">
+                    <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka" class="w-full h-full object-cover">
+                    <!-- Badge přes fotku (vlevo nahoře) -->
+                    <div class="absolute top-8 left-8 bg-white rounded-2xl p-4 shadow-xl">
+                        <img src="images/awards/regionalni-potravina-200.png" alt="Regionální potravina" class="w-20 h-20">
+                    </div>
+                </div>
+                
+                <!-- Pravá strana - Text -->
+                <div class="p-12 md:p-16">
+                    <div class="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                        <i class="fas fa-award mr-2"></i> Oceněno Ministerstvem zemědělství ČR
+                    </div>
+                    
+                    <h2 class="text-5xl md:text-6xl font-bold serif text-gray-900 mb-6">
+                        Přijďte na<br><span class="text-amber-700">Pohádku!</span>
+                    </h2>
+                    
+                    <div class="section-divider mb-6"></div>
+                    
+                    <p class="text-xl text-gray-700 mb-6 leading-relaxed">
+                        Náš zákusek <strong>Pohádka</strong> od Bílokarpatského pěstitele je více než jen dezert – je to <strong>oceněná regionální specialita</strong>.
+                    </p>
+                    
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Získal prestižní titul <strong class="text-green-700">Regionální potravina</strong> za výjimečnou kvalitu, použití regionálních surovin a autentickou chuť Bílých Karpat.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#kontakt" class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-full font-bold text-center transition shadow-lg">
+                            <i class="fas fa-phone mr-2"></i> Rezervovat stůl
+                        </a>
+                        <a href="#produkty" class="bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-full font-semibold text-center transition">
+                            Další speciality <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- VARIANTA 4: Karta s vystupujícím badgem (elegantní) -->
+    <!-- ============================================ -->
+    <section id="variant-4" class="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50 to-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-5xl font-bold serif text-gray-800 mb-4">VARIANTA 4: Karta s badgem</h2>
+            <p class="text-center text-gray-500 mb-12">Elegantní - kompaktní karta s "plovoucím" badgem</p>
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- Hlavní karta -->
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden relative">
+                
+                <!-- Fotka nahoře -->
+                <div class="relative h-80">
+                    <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    
+                    <!-- Badge "plave" nad kartou (vystupující efekt) -->
+                    <div class="absolute -bottom-16 left-1/2 transform -translate-x-1/2 bg-white rounded-full p-6 shadow-2xl border-8 border-green-50">
+                        <img src="images/awards/regionalni-potravina-200.png" alt="Regionální potravina" class="w-32 h-32">
+                    </div>
+                </div>
+                
+                <!-- Text sekce -->
+                <div class="pt-24 pb-12 px-8 md:px-16 text-center">
+                    <h2 class="text-5xl font-bold serif text-gray-900 mb-4">
+                        Ochutnejte naši <span class="text-amber-700">Pohádku</span>
+                    </h2>
+                    
+                    <p class="text-green-700 font-bold text-xl mb-6">
+                        <i class="fas fa-award mr-2"></i> Regionální potravina 2024
+                    </p>
+                    
+                    <div class="section-divider mb-6"></div>
+                    
+                    <p class="text-lg text-gray-700 mb-6 max-w-3xl mx-auto leading-relaxed">
+                        Tento výjimečný zákusek od <strong>Bílokarpatského pěstitele</strong> získal prestižní ocenění <strong>Regionální potravina</strong> Ministerstva zemědělství České republiky.
+                    </p>
+                    
+                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                        Oceněno za autentickou chuť, použití kvalitních regionálních surovin a tradiční výrobu v srdci Bílých Karpat.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#kontakt" class="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-lg">
+                            <i class="fas fa-calendar-check mr-2"></i> Přijďte si pochutnat
+                        </a>
+                        <a href="https://www.bilokarpatsky-pestitel.cz/" target="_blank" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-10 py-4 rounded-full font-semibold text-lg transition">
+                            O Bílokarpatském pěstiteli <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigace dole -->
+    <div class="bg-gray-900 text-white p-8 text-center">
+        <p class="text-gray-400">Scroll nahoru pro výběr varianty</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <a href="#variant-1" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded">V1</a>
+            <a href="#variant-2" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded">V2</a>
+            <a href="#variant-3" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded">V3</a>
+            <a href="#variant-4" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded">V4</a>
+        </div>
+    </div>
+
+</body>
+</html>
