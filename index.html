@@ -345,14 +345,13 @@
 
     <!-- Pohádka Section -->
     <section class="py-12 md:py-20 bg-white relative overflow-hidden">
+        <!-- Pás pozadí - absolutně mimo kontejner, přes celou šířku obrazovky -->
+        <div class="absolute left-0 right-0 top-12 md:top-20 bottom-12 md:bottom-20 overflow-hidden rounded-l-3xl ml-4 sm:ml-6 md:ml-8 slide-right" style="z-index: 0;">
+            <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka pozadí" class="w-full h-full object-cover rounded-l-3xl" loading="lazy" style="filter: blur(20px); border-radius: 1.5rem 0 0 1.5rem;">
+            <div class="absolute inset-0 bg-gradient-to-r from-amber-50/90 via-white/75 to-amber-50/90" style="border-radius: 1.5rem 0 0 1.5rem;"></div>
+        </div>
+        
         <div class="max-w-7xl mx-auto relative">
-            
-            <!-- Pás pozadí - přes celou šířku (pod vším) -->
-            <div class="absolute inset-0 overflow-hidden rounded-l-3xl ml-4 sm:ml-6 md:ml-8 slide-right" style="z-index: 0;">
-                <img src="images/optimized/pohadka-1200.jpg" alt="Pohádka pozadí" class="w-full h-full object-cover rounded-l-3xl" loading="lazy" style="filter: blur(20px); border-radius: 1.5rem 0 0 1.5rem;">
-                <div class="absolute inset-0 bg-gradient-to-r from-amber-50/90 via-white/75 to-amber-50/90" style="border-radius: 1.5rem 0 0 1.5rem;"></div>
-            </div>
-            
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center relative" style="z-index: 10;">
                 
                 <!-- Levá strana - Text -->
