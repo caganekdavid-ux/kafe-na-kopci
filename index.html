@@ -921,8 +921,11 @@
                 `).join('');
                 
                 // Start auto-play for mobile slider only
-                setInterval(nextSlide, 5000);
+                let autoPlayInterval = setInterval(nextSlide, 7000); // Increased to 7 seconds
                 updateSlider();
+                
+                // Store interval globally for reset
+                window.sliderAutoPlayInterval = autoPlayInterval;
             });
         
         function updateSlider() {
@@ -948,8 +951,22 @@
         
         const prevBtn = document.getElementById("slider-prev");
         const nextBtn = document.getElementById("slider-next");
-        if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-        if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+        
+        function resetAutoPlay() {
+            if (window.sliderAutoPlayInterval) {
+                clearInterval(window.sliderAutoPlayInterval);
+                window.sliderAutoPlayInterval = setInterval(nextSlide, 7000);
+            }
+        }
+        
+        if (prevBtn) prevBtn.addEventListener("click", () => {
+            prevSlide();
+            resetAutoPlay();
+        });
+        if (nextBtn) nextBtn.addEventListener("click", () => {
+            nextSlide();
+            resetAutoPlay();
+        });
         
         // Touch swipe support for mobile slider
         let touchStartX = 0;
@@ -972,6 +989,12 @@
             const diff = touchStartX - touchEndX;
             
             if (Math.abs(diff) > swipeThreshold) {
+                // Reset auto-play timer when user swipes
+                if (window.sliderAutoPlayInterval) {
+                    clearInterval(window.sliderAutoPlayInterval);
+                    window.sliderAutoPlayInterval = setInterval(nextSlide, 7000);
+                }
+                
                 if (diff > 0) {
                     // Swiped left -> next slide
                     nextSlide();
