@@ -5,14 +5,14 @@
     "category": "cafe"
   },
   {
-    "src": "images/optimized/photo-1778969994851.jpg",
-    "alt": "Kafé na Kopci",
-    "category": "desserts"
-  },
-  {
     "src": "images/optimized/Fslivovice-15.jpg",
     "alt": "Náš višňový likér",
     "category": "grower"
+  },
+  {
+    "src": "images/optimized/photo-1778969994851.jpg",
+    "alt": "Kafé na Kopci",
+    "category": "desserts"
   },
   {
     "src": "images/optimized/Fslivovice-16.jpg",
