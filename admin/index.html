@@ -82,22 +82,23 @@
     <div id="adminPanel" class="hidden">
         <!-- Header -->
         <div class="bg-white shadow-md">
-            <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-800">Administrace Kafé na Kopci</h1>
-                </div>
+            <div class="max-w-7xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between gap-3">
+                <h1 class="text-base sm:text-2xl font-bold text-gray-800 leading-tight min-w-0">
+                    <span class="block sm:inline">Administrace</span>
+                    <span class="block sm:inline text-amber-700 sm:text-gray-800">Kafé na Kopci</span>
+                </h1>
                 <button 
                     id="logoutBtn"
-                    class="px-4 py-2 text-gray-600 hover:text-gray-800 font-semibold"
+                    class="shrink-0 px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base text-gray-600 hover:text-gray-800 font-semibold border border-gray-300 rounded-lg whitespace-nowrap"
                 >
-                    Odhlásit se
+                    Odhlásit
                 </button>
             </div>
             <!-- Tab Menu -->
             <div class="max-w-7xl mx-auto px-4">
-                <nav class="flex gap-1 border-t border-gray-100">
-                    <button data-tab="galerie" class="tab-btn px-5 py-3 font-semibold text-sm border-b-2 border-amber-600 text-amber-700">Galerie</button>
-                    <button data-tab="oteviraci-doba" class="tab-btn px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-500 hover:text-gray-800">Otevírací doba</button>
+                <nav class="flex gap-1 border-t border-gray-100 overflow-x-auto">
+                    <button data-tab="galerie" class="tab-btn shrink-0 px-4 sm:px-5 py-3 font-semibold text-sm border-b-2 border-amber-600 text-amber-700 whitespace-nowrap">Galerie</button>
+                    <button data-tab="oteviraci-doba" class="tab-btn shrink-0 px-4 sm:px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-500 hover:text-gray-800 whitespace-nowrap">Otevírací doba</button>
                 </nav>
             </div>
         </div>
