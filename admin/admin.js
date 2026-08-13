@@ -204,6 +204,9 @@ async function loadSiteSettings() {
 function renderSettingsForm() {
     const container = document.getElementById('hoursInputs');
     if (!container) return;
+    if (!Array.isArray(siteSettings.openingHours) || siteSettings.openingHours.length !== 7) {
+        siteSettings.openingHours = DEFAULT_DAYS.map(d => ({ day: d, hours: '' }));
+    }
     container.innerHTML = siteSettings.openingHours.map((row, i) => `
         <div class="flex items-center gap-3">
             <label class="w-24 text-sm font-semibold text-gray-700">${row.day}</label>
