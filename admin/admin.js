@@ -26,6 +26,10 @@ function decodeToken(hex, key) {
 let githubToken = '';
 let galleryData = [];
 let draggedElement = null;
+let siteSettings = { openingHours: [], note: '' };
+
+const SETTINGS_FILE = 'site-settings.json';
+const DEFAULT_DAYS = ['Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota', 'Neděle'];
 
 // DOM Elements
 const loginScreen = document.getElementById('loginScreen');
@@ -130,9 +134,11 @@ loginForm.addEventListener('submit', async (e) => {
     showLoading('Načítám galerii...');
     try {
         await loadGalleryData();
+        try { await loadSiteSettings(); } catch (e) { console.error('Settings load failed', e); }
         loginScreen.classList.add('hidden');
         adminPanel.classList.remove('hidden');
         renderGallery();
+        renderSettingsForm();
         hideLoading();
     } catch (error) {
         hideLoading();
@@ -174,6 +180,98 @@ async function loadGalleryData() {
     galleryData = JSON.parse(content);
     
     return data.sha; // Return SHA for updates
+}
+
+// ===== Site settings (opening hours + note) =====
+async function loadSiteSettings() {
+    const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${SETTINGS_FILE}`;
+    const response = await fetch(url, {
+        headers: {
+            'Authorization': `Bearer ${githubToken}`,
+            'Accept': 'application/vnd.github.v3+json'
+        }
+    });
+    if (!response.ok) throw new Error('Failed to load site settings');
+    const data = await response.json();
+    const content = decodeURIComponent(escape(atob(data.content)));
+    siteSettings = JSON.parse(content);
+    if (!Array.isArray(siteSettings.openingHours) || siteSettings.openingHours.length !== 7) {
+        siteSettings.openingHours = DEFAULT_DAYS.map(d => ({ day: d, hours: '' }));
+    }
+    if (typeof siteSettings.note !== 'string') siteSettings.note = '';
+}
+
+function renderSettingsForm() {
+    const container = document.getElementById('hoursInputs');
+    if (!container) return;
+    container.innerHTML = siteSettings.openingHours.map((row, i) => `
+        <div class="flex items-center gap-3">
+            <label class="w-24 text-sm font-semibold text-gray-700">${row.day}</label>
+            <input
+                type="text"
+                class="hours-input flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                data-index="${i}"
+                value="${row.hours || ''}"
+                placeholder="např. 14–19 nebo Zavřeno"
+            />
+        </div>
+    `).join('');
+    const noteInput = document.getElementById('openingNoteInput');
+    if (noteInput) noteInput.value = siteSettings.note || '';
+}
+
+async function saveSiteSettings(commitMessage = 'Update opening hours / note') {
+    const getUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${SETTINGS_FILE}`;
+    const getResponse = await fetch(getUrl, {
+        headers: {
+            'Authorization': `Bearer ${githubToken}`,
+            'Accept': 'application/vnd.github.v3+json'
+        }
+    });
+    if (!getResponse.ok) throw new Error('Failed to get settings SHA');
+    const currentFile = await getResponse.json();
+
+    const content = JSON.stringify(siteSettings, null, 2);
+    const base64Content = btoa(unescape(encodeURIComponent(content)));
+
+    const updateResponse = await fetch(getUrl, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${githubToken}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            message: commitMessage,
+            content: base64Content,
+            sha: currentFile.sha,
+            branch: GITHUB_CONFIG.branch
+        })
+    });
+    if (!updateResponse.ok) throw new Error('Failed to update site settings');
+    return updateResponse.json();
+}
+
+const saveHoursBtn = document.getElementById('saveHoursBtn');
+if (saveHoursBtn) {
+    saveHoursBtn.addEventListener('click', async () => {
+        document.querySelectorAll('.hours-input').forEach(input => {
+            const i = parseInt(input.dataset.index);
+            siteSettings.openingHours[i].hours = input.value.trim();
+        });
+        const noteInput = document.getElementById('openingNoteInput');
+        siteSettings.note = noteInput ? noteInput.value.trim() : '';
+
+        showLoading('Ukládám otevírací dobu...');
+        try {
+            await saveSiteSettings();
+            hideLoading();
+            alert('Uloženo! Změna se na webu projeví do 1–2 minut.');
+        } catch (error) {
+            hideLoading();
+            alert('Chyba při ukládání: ' + error.message);
+        }
+    });
 }
 
 // Render gallery

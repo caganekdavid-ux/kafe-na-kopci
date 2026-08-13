@@ -1,0 +1,12 @@
+{
+  "openingHours": [
+    { "day": "Pondělí", "hours": "14–19" },
+    { "day": "Úterý", "hours": "14–19" },
+    { "day": "Středa", "hours": "14–19" },
+    { "day": "Čtvrtek", "hours": "14–19" },
+    { "day": "Pátek", "hours": "10–21" },
+    { "day": "Sobota", "hours": "10–21" },
+    { "day": "Neděle", "hours": "10–20" }
+  ],
+  "note": ""
+}

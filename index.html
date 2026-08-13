@@ -693,7 +693,7 @@
                             <div>
                                 <p class="font-semibold text-gray-800">Otevírací doba</p>
                                 <div class="text-gray-600 text-sm">
-                                    <div class="grid grid-cols-2 gap-x-4 gap-y-1">
+                                    <div id="openingHoursGrid" class="grid grid-cols-2 gap-x-4 gap-y-1">
                                         <span>Pondělí:</span><span class="font-semibold">14–19</span>
                                         <span>Úterý:</span><span class="font-semibold">14–19</span>
                                         <span>Středa:</span><span class="font-semibold">14–19</span>
@@ -702,7 +702,32 @@
                                         <span>Sobota:</span><span class="font-semibold">10–21</span>
                                         <span>Neděle:</span><span class="font-semibold">10–20</span>
                                     </div>
+                                    <p id="openingNote" class="hidden mt-3 text-amber-700 font-semibold"></p>
                                 </div>
+                                <script>
+                                (function () {
+                                    fetch('site-settings.json?v=' + Date.now())
+                                        .then(function (r) { return r.ok ? r.json() : null; })
+                                        .then(function (s) {
+                                            if (!s) return;
+                                            if (Array.isArray(s.openingHours) && s.openingHours.length) {
+                                                var grid = document.getElementById('openingHoursGrid');
+                                                grid.innerHTML = s.openingHours.map(function (row) {
+                                                    var closed = /zavřeno/i.test(row.hours || '');
+                                                    var cls = closed ? 'text-red-600 font-semibold' : 'font-semibold';
+                                                    return '<span>' + row.day + ':</span><span class="' + cls + '">' + (row.hours || '') + '</span>';
+                                                }).join('');
+                                            }
+                                            var note = (s.note || '').trim();
+                                            if (note) {
+                                                var el = document.getElementById('openingNote');
+                                                el.textContent = note;
+                                                el.classList.remove('hidden');
+                                            }
+                                        })
+                                        .catch(function () { /* fallback: statická doba v HTML */ });
+                                })();
+                                </script>
                             </div>
                         </div>
                     </div>
