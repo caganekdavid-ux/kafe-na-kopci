@@ -2,15 +2,15 @@
   "openingHours": [
     {
       "day": "Pondělí",
-      "hours": "14–19"
+      "hours": "Zavřeno"
     },
     {
       "day": "Úterý",
-      "hours": "14–19"
+      "hours": "Zavřeno"
     },
     {
       "day": "Středa",
-      "hours": "14–19"
+      "hours": "Zavřeno"
     },
     {
       "day": "Čtvrtek",
@@ -18,15 +18,15 @@
     },
     {
       "day": "Pátek",
-      "hours": "10–21"
+      "hours": "10–20"
     },
     {
       "day": "Sobota",
-      "hours": "10–21"
+      "hours": "10–20"
     },
     {
       "day": "Neděle",
-      "hours": "10–20"
+      "hours": "10–19"
     }
   ],
   "note": ""
